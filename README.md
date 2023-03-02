@@ -6,5 +6,5 @@ Kelompok Keren
 Ketua Kelompok: Alphonsus Jovian Joy Reynaldo – 20/460539/TK/51128
 - Anggota 1: Alphonsus Jovian Joy Reynaldo – 20/460539/TK/51128
 - Anggota 2: 
-- Anggota 3: 
+- Anggota 3: Rahmiyatul Hasanah YE - 20/460561/TK/51150
 - Anggota 4: Christian Ale Perdana - 20/463596/TK/51588
