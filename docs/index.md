@@ -55,3 +55,9 @@ Deteksi plat nomor kendaraan merupakan aplikasi yang berbasis pada teknologi pen
 
 #### Lean Canvas
 ![image](https://user-images.githubusercontent.com/55451337/222321870-b0116a8f-8452-430a-9238-c27ef1f9387d.png)
+
+#### Tujuan
+Meningkatkan efisiensi dan keamanan aksesibilitas tempat parkir
+
+#### Pengguna potensial dan kebutuhan pengguna
+
