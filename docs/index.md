@@ -60,4 +60,27 @@ Deteksi plat nomor kendaraan merupakan aplikasi yang berbasis pada teknologi pen
 Meningkatkan efisiensi dan keamanan aksesibilitas tempat parkir
 
 #### Pengguna potensial dan kebutuhan pengguna
+Perguruan tinggi, kantor, dan sekolah menengah atas yang:
+- Memiliki banyak pengunjung yang cenderung tetap dan dibatasi (siswa, mahasiswa, pegawai)
+- Memiliki tempat parkir yang terbatas
 
+#### Use case diagram
+![aaaaa](https://user-images.githubusercontent.com/72853893/223654113-9749d39d-2e71-4372-b107-0a6ceb915cb4.jpg)
+
+#### Functional requirements
+![Screenshot 2023-03-08 145546](https://user-images.githubusercontent.com/72853893/223654576-ed94d612-4d46-4938-8d1b-53fb886c0ce2.png)
+
+#### Low-fidelity Wireframe
+A. Dashboard Utama
+![aa](https://user-images.githubusercontent.com/72853893/223655106-d5fde6a3-1c96-43fc-9e1b-fec7dabcd218.png)
+B. Halaman Login
+![aa](https://user-images.githubusercontent.com/72853893/223655270-1da0252e-0b86-4778-905c-bfad3912dac1.png)
+C. Halaman Log Akses (Admin Manajerial Parkir)
+![aa](https://user-images.githubusercontent.com/72853893/223655732-b3ddbeeb-343d-4d05-b43c-07493d96b88b.png)
+D. Halaman Create, Update, dan Delete Data (Admin Akademik)
+![aa](https://user-images.githubusercontent.com/72853893/223655793-fcbbd832-64f1-4cb9-884f-40f68d39a976.png)
+E. Halaman Read Data Kendaraan (Admin Manajerial Parkir dan Admin Akademik)
+![aa](https://user-images.githubusercontent.com/72853893/223655980-715c2405-f9e9-43f0-98c6-d47a3f2c6910.png)
+
+#### Gantt-Chart 
+![aa](https://user-images.githubusercontent.com/72853893/223656303-252e7fb5-97b3-4a47-bb4c-68798d9312d7.png)
