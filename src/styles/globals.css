@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Poppins';
+	src: url('../assets/fonts/poppins.otf')
+	format('opentype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@layer base {
+
+  html{
+    font-family: Poppins, system-ui, sans-serif;
+
+  }
+
+  h1 {
+    @apply text-5xl font-bold mb-8;
+  }
+  h2 {
+    @apply text-4xl font-semibold mb-6;
+  }
+  h3 {
+    @apply text-2xl font-medium mb-4 mt-6;
+  }
+  h4 {
+    @apply text-xl font-medium;
+  }
+  h5 {
+    @apply text-lg font-medium;
+  }
+  h6 {
+    @apply text-base font-medium;
+  }
+  p {
+    @apply text-base;
+  }
+  li{
+	@apply text-base;	
+  }
+
+  section{
+    @apply p-8 md:p-16;
+  }
+
+}
+
+@layer components {
+  .navbar-items{
+    @apply lg:bg-transparent py-4 lg:py-1 lg:px-4 w-full lg:w-auto text-center cursor-pointer transition-all duration-300 ease-in-out lg:mx-3 rounded-lg 
+     hover:text-navy  active:text-navy active:border-navy focus:border-navy font-normal border border-transparent;
+  }
+
+  .input{
+    @apply border-2 w-full py-2 px-1.5 rounded-lg;
+  }
+
+  .bg-clip-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Scroll Bar */
+  
+  ::-webkit-scrollbar {
+    width: 12px;
+    border-radius: 2px;
+    background-color: #F8FCFF;
+    box-shadow: inset 0px 0px 7px -3px rgba(0, 0, 0, 0.25); 
+  }
+  
+  ::-webkit-scrollbar-track{
+    margin-bottom: 2px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: #bfd5e6;
+    box-shadow: 0px 0px 1px #1C1C1E;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #75a5c9;
+    box-shadow: 0px 0px 1px #1C1C1E;
+  }
+  
+  ::-webkit-scrollbar-thumb:active {
+    background-color: #6399c1;
+    box-shadow: 0px 0px 1px #1C1C1E;
+  }
+}
+
+@layer utilities {
+  .filter-none {
+    filter: none;
+  }
+  .filter-grayscale {
+    filter: grayscale(100%);
+  }
+}
