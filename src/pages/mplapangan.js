@@ -1,8 +1,9 @@
+import SideMenu from '@/Components/SideMenu'
 import Head from 'next/head'
 
 export default function MpLapangan() {
     return (
-        <>
+        <SideMenu>
             <Head>
                 <title>SIMARKIR</title>
                 <meta name="description" content="Simarkir: Sistem Manajemen Parkir" />
@@ -165,6 +166,6 @@ export default function MpLapangan() {
                 </div>            
             </section>
 
-        </>
+        </SideMenu>
     )
 }
