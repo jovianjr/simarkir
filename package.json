@@ -11,8 +11,9 @@
   "dependencies": {
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.3",
+    "feather-icons": "^4.29.0",
     "make-runnable": "^1.4.1",
-    "next": "13.2.3",
+    "next": "^13.2.3",
     "node-fetch": "^3.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
