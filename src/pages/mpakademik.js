@@ -1,15 +1,15 @@
+import SideMenu from '@/Components/SideMenu'
 import Head from 'next/head'
 
 export default function MpAkademik() {
     return (
-        <>
+        <SideMenu>
             <Head>
                 <title>SIMARKIR</title>
                 <meta name="description" content="Simarkir: Sistem Manajemen Parkir" />
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-
             <section class="h-screen bg-white container px-4 mx-auto">
                 <div class="mt-6 md:flex md:items-center md:justify-between">
                     <div>
@@ -150,6 +150,6 @@ export default function MpAkademik() {
                 </div>            
             </section>
 
-        </>
+        </SideMenu>
     )
 }
