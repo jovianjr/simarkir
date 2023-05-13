@@ -4,6 +4,7 @@ import Head from 'next/head'
 export default function MpLapangan() {
     return (
         <SideMenu>
+            <script src="https://unpkg.com/feather-icons"></script>
             <Head>
                 <title>SIMARKIR</title>
                 <meta name="description" content="Simarkir: Sistem Manajemen Parkir" />
@@ -12,11 +13,10 @@ export default function MpLapangan() {
             </Head>
 
             <section class="h-screen bg-white">
-
-                <div class="mr-10 ml-10 mt-6 mb-6 md:flex md:items-center md:justify-between">
+                <div class="mr-10 ml-10 mt-6 mb-10 md:flex md:items-baseline md:justify-between">
                     <div>
-                        <h1 class="text-black mb-1">Log Parkir</h1>
-                        <p class="text-black">Daftar kendaraan masuk dan keluar DTETI hari ini</p>
+                        <h1 class="text-black mb-2">Log Parkir</h1>
+                        <p class="font-extralight text-sm text-gray-600">Daftar kendaraan masuk dan keluar DTETI hari ini</p>
                     </div>
 
                     <div class="relative flex items-center mt-4 md:mt-0">
@@ -36,36 +36,39 @@ export default function MpLapangan() {
 
                 <div class="mr-10 ml-10 md:flex md:items-center md:justify-between">
                     <div class= "md:flex md:items-center">
-                        <div class="mr-12">
-                            <h4>Motor</h4>
-                            <p>20/20</p>                            
+
+                        <div class="mr-3 divide-x divide-white/5 rounded-lg text-white bg-red md:flex md:items-center md:justify-between">
+                            <p class="px-4 py-2 text-sm">Motor</p>
+                            <p class="px-4 py-2 text-sm">22/20 </p>
                         </div>
 
-                        <div class="mr-12">
-                            <h4>Mobil</h4>
-                            <p>20/20</p>
+                        <div class="divide-x divide-white/5 rounded-lg text-white bg-gray-800 md:flex md:items-center md:justify-between">
+                            <p class="px-4 py-2 text-sm">Mobil</p>
+                            <p class="px-4 py-2 text-sm">12/20 </p>
                         </div>
                     </div>
 
-
                     <div>
-                        <h4>Hari, tanggal</h4>
-                        <p>23:00</p>
+                        <div class="divide-x divide-white/5 rounded-lg text-black bg-gray-200/50 md:flex md:items-center md:justify-between">
+                            <p class="px-4 py-2 text-sm">Senin, 1 Mei 2023</p>
+                            <p class="px-4 py-2 text-sm">13:32 </p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="flex flex-col mr-10 ml-10 mt-4">
                     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                            <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
-                                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                                    <thead class="bg-black dark:bg-black">
-                                        <tr class="text-white text-sm text-left rtl:text-right">
-                                            <th scope="col" class="pl-8 py-3.5"> No </th>
+                            <div class="overflow-hidden border border-gray-200 dark:border-gray-200 md:rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-200">
+                                    <thead class="bg-gray-200/50 dark:bg-gray-200/50">
 
-                                            <th scope="col" class="py-3.5">
+                                        <tr class="text-black text-sm text-left rtl:text-right">
+                                            <th scope="col" class="font-normal px-4 py-3.5 text-right"> No </th>
+
+                                            <th scope="col" class="px-4 py-3.5">
                                                 <button class="flex items-center gap-x-3 focus:outline-none">
-                                                    <span>Kendaraan</span>
+                                                    <span class="font-normal"> Kendaraan</span>
 
                                                     <svg class="h-3" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M2.13347 0.0999756H2.98516L5.01902 4.79058H3.86226L3.45549 3.79907H1.63772L1.24366 4.79058H0.0996094L2.13347 0.0999756ZM2.54025 1.46012L1.96822 2.92196H3.11227L2.54025 1.46012Z" fill="currentColor" stroke="currentColor" stroke-width="0.1" />
@@ -75,17 +78,17 @@ export default function MpLapangan() {
                                                 </button>
                                             </th>
 
-                                            <th scope="col" class="px-4 py-3.5"> Kelompok Civitas </th>
-                                            <th scope="col" class="px-4 py-3.5"> Masuk </th>
-                                            <th scope="col" class="px-4 py-3.5"> Keluar </th>
+                                            <th scope="col" class="font-normal px-4 py-3.5"> Kelompok Civitas </th>
+                                            <th scope="col" class="font-normal px-4 py-3.5"> Masuk </th>
+                                            <th scope="col" class="font-normal px-4 py-3.5"> Keluar </th>
                                         </tr>
                                     </thead>
 
                                     <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-200 dark:bg-white">
                                         <tr class="text-black text-sm font-normal text-left rtl:text-right">
-                                            <td class="text-sm font-bold pl-10 py-3.5"> 1 </td>
+                                            <td class="text-sm px-4 py-3.5 text-right"> 1 </td>
 
-                                            <td class="py-2.5 flex items-center gap-x-3 focus:outline-none">
+                                            <td class="px-4 py-2.5 flex items-center gap-x-3 focus:outline-none">
                                                 <div>
                                                     <p class="font-bold text-gray-800 text-sm"> AB 1982 LL </p>
                                                     <p class="text-gray-600 text-xs"> Motor </p>
@@ -93,7 +96,7 @@ export default function MpLapangan() {
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap">
-                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-pink-500 gap-x-2 bg-pink-200/50">
+                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-dark_blue gap-x-2 bg-light_blue/20">
                                                     Mahasiswa
                                                 </div>
                                             </td>
@@ -102,10 +105,10 @@ export default function MpLapangan() {
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 09:00 </td>
                                         </tr>
                                         
-                                        <tr class="bg-gray-200/50 text-black text-sm font-normal text-left rtl:text-right">
-                                            <td class="text-sm font-bold pl-10 py-3.5"> 2 </td>
+                                        <tr class="text-black text-sm font-normal text-left rtl:text-right">
+                                            <td class="text-sm px-4 py-3.5 text-right"> 2 </td>
 
-                                            <td class="py-2.5 flex items-center gap-x-3 focus:outline-none">
+                                            <td class="px-4 py-2.5 flex items-center gap-x-3 focus:outline-none">
                                                 <div>
                                                     <p class="font-bold text-gray-800 text-sm"> BA 1342 LN </p>
                                                     <p class="text-gray-600 text-xs"> Mobil </p>
@@ -123,9 +126,9 @@ export default function MpLapangan() {
                                         </tr>
 
                                         <tr class="text-black text-sm font-normal text-left rtl:text-right">
-                                            <td class="text-sm font-bold pl-10 py-3.5"> 3 </td>
+                                            <td class="text-sm px-4 py-3.5 text-right"> 3 </td>
 
-                                            <td class="py-2.5 flex items-center gap-x-3 focus:outline-none">
+                                            <td class="px-4 py-2.5 flex items-center gap-x-3 focus:outline-none">
                                                 <div>
                                                     <p class="font-bold text-gray-800 text-sm"> AB 3412 LL </p>
                                                     <p class="text-gray-600 text-xs"> Mobil </p>
@@ -142,10 +145,10 @@ export default function MpLapangan() {
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 19:23 </td>
                                         </tr>
 
-                                        <tr class="bg-gray-200/50 text-black text-sm font-normal text-left rtl:text-right">
-                                            <td class="text-sm font-bold pl-10 py-3.5"> 4 </td>
+                                        <tr class="text-black text-sm font-normal text-left rtl:text-right">
+                                            <td class="text-sm px-4 py-3.5 text-right"> 4 </td>
 
-                                            <td class="py-2.5 flex items-center gap-x-3 focus:outline-none">
+                                            <td class="px-4 py-2.5 flex items-center gap-x-3 focus:outline-none">
                                                 <div>
                                                     <p class="font-bold text-gray-800 text-sm"> AB 1982 LL </p>
                                                     <p class="text-gray-600 text-xs"> Motor </p>
@@ -153,7 +156,7 @@ export default function MpLapangan() {
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap">
-                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-pink-500 gap-x-2 bg-pink-200/50">
+                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-dark_blue gap-x-2 bg-light_blue/20">
                                                     Mahasiswa
                                                 </div>
                                             </td>
@@ -172,6 +175,9 @@ export default function MpLapangan() {
                 </div>            
             </section>
 
+            <script>
+                feather.replace()
+            </script>
         </SideMenu>
     )
 }

@@ -13,10 +13,10 @@ export default function MpAkademik() {
             
             <section class="h-screen bg-white">
                 
-                <div class="mr-10 ml-10 mt-6 md:flex md:items-center md:justify-between">
+                <div class="mr-10 ml-10 mt-6 mb-6 md:flex md:items-baseline md:justify-between">
                     <div>
-                        <h1 class="font-black">Daftar Kendaraan</h1>
-                        <p> Daftar kendaraan terdaftar sebagai milik civitas DTETI </p>
+                        <h1 class="text-black mb-2">Daftar Kendaraan</h1>
+                        <p class="font-extralight text-sm text-gray-600"> Daftar kendaraan terdaftar sebagai milik civitas DTETI </p>
                     </div>
 
                     <div class="relative flex items-center mt-4 md:mt-0">
@@ -34,16 +34,44 @@ export default function MpAkademik() {
                     </div>
                 </div>
 
+                <div class="mr-10 ml-10 md:flex md:items-baseline md:justify-between inline-flex overflow-hidden">
+                    <div class="inline-flex overflow-hidden rounded-lg divide divide-x divide-white/20">                    
+                        <button class="px-5 py-2 text-xs font-medium text-white bg-gray-800">
+                            Mobil
+                        </button>
+
+                        <button class="px-5 py-2 text-xs font-medium text-white bg-gray-800">
+                            Motor
+                        </button>
+                    </div>
+
+                    <div class="inline-flex overflow-hidden rounded-lg divide divide-x divide-white/20">                    
+                        <button class="px-5 py-2 text-xs font-medium text-white bg-gray-800">
+                            Dosen
+                        </button>
+
+                        <button class="px-5 py-2 text-xs font-medium text-white bg-gray-800">
+                            Mahasiswa
+                        </button>
+
+                        <button class="px-5 py-2 text-xs font-medium text-white bg-gray-800">
+                            Tendik
+                        </button>
+                    </div>
+                </div>
+
                 <div class="flex flex-col mr-10 ml-10 mt-4">
                     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                            <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
-                                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                                    <thead class="bg-black dark:bg-black">
-                                        <tr class="text-white text-sm text-left rtl:text-right">
-                                            <th scope="col" class="pl-8 py-3.5"> No </th>
+                            <div class="overflow-hidden border border-gray-200 dark:border-gray-200 md:rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-200">
 
-                                            <th scope="col" class="py-3.5">
+                                    <thead class="bg-gray-200/50 dark:bg-gray-200/50">
+                                        <tr class="text-black text-sm text-left rtl:text-right">
+                                            <th scope="col" class="font-normal px-4 py-3.5 text-right"> No </th>
+                                            <th scope="col" class="font-normal px-4 py-3.5"> Nama </th>
+
+                                            <th scope="col" class="font-normal px-4 py-3.5">
                                                 <button class="flex items-center gap-x-3 focus:outline-none">
                                                     <span>Kendaraan</span>
 
@@ -55,39 +83,41 @@ export default function MpAkademik() {
                                                 </button>
                                             </th>
 
-                                            <th scope="col" class="px-4 py-3.5"> Kelompok Civitas </th>
-                                            <th scope="col" class="px-4 py-3.5"> Masuk </th>
-                                            <th scope="col" class="px-4 py-3.5"> Keluar </th>
+                                            <th scope="col" class="font-normal px-4 py-3.5"> Kelompok Civitas </th>
+                                            <th scope="col" class="font-normal px-4 py-3.5"> NIP/NIU </th>
+                                            <th scope="col" class="font-normal px-4 py-3.5"> Act </th>
                                         </tr>
                                     </thead>
 
                                     <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-200 dark:bg-white">
                                         <tr class="text-black text-sm font-normal text-left rtl:text-right">
-                                            <td class="text-sm font-bold pl-10 py-3.5"> 1 </td>
+                                            <td class="text-sm px-4 py-3.5 text-right"> 1 </td>
+                                            <td class="text-sm px-4 py-3.5 max-w-fit"> Michael Sitorus </td>
 
-                                            <td class="py-2.5 flex items-center gap-x-3 focus:outline-none">
+                                            <td class="px-4 py-2.5 flex items-center gap-x-3 focus:outline-none">
                                                 <div>
-                                                    <p class="font-bold text-gray-800 text-sm"> AB 1982 LL </p>
+                                                    <p class="font-bold text-sm"> AB 1982 LL </p>
                                                     <p class="text-gray-600 text-xs"> Motor </p>
                                                 </div>
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap">
-                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-pink-500 gap-x-2 bg-pink-200/50">
+                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-dark_blue gap-x-2 bg-light_blue/20">
                                                     Mahasiswa
                                                 </div>
                                             </td>
 
-                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 08:00 </td>
-                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 09:00 </td>
+                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 123456 </td>
+                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> + </td>
                                         </tr>
                                         
-                                        <tr class="bg-gray-200/50 text-black text-sm font-normal text-left rtl:text-right">
-                                            <td class="text-sm font-bold pl-10 py-3.5"> 2 </td>
+                                        <tr class="text-black text-sm font-normal text-left rtl:text-right">
+                                            <td class="text-sm px-4 py-3.5 text-right"> 2 </td>
+                                            <td class="text-sm px-4 py-3.5 max-w-fit"> Michael Sitorus </td>
 
-                                            <td class="py-2.5 flex items-center gap-x-3 focus:outline-none">
+                                            <td class="px-4 py-2.5 flex items-center gap-x-3 focus:outline-none">
                                                 <div>
-                                                    <p class="font-bold text-gray-800 text-sm"> BA 1342 LN </p>
+                                                    <p class="font-bold text-sm"> BA 1342 LN </p>
                                                     <p class="text-gray-600 text-xs"> Mobil </p>
                                                 </div>
                                             </td>
@@ -98,16 +128,17 @@ export default function MpAkademik() {
                                                 </div>
                                             </td>
 
-                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 08:04 </td>
-                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 09:56 </td>
+                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 789123 </td>
+                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> + </td>
                                         </tr>
 
                                         <tr class="text-black text-sm font-normal text-left rtl:text-right">
-                                            <td class="text-sm font-bold pl-10 py-3.5"> 3 </td>
+                                            <td class="text-sm px-4 py-3.5 text-right"> 3 </td>
+                                            <td class="text-sm px-4 py-3.5 max-w-fit"> Michael Sitorus </td>
 
-                                            <td class="py-2.5 flex items-center gap-x-3 focus:outline-none">
+                                            <td class="px-4 py-2.5 flex items-center gap-x-3 focus:outline-none">
                                                 <div>
-                                                    <p class="font-bold text-gray-800 text-sm"> AB 3412 LL </p>
+                                                    <p class="font-bold text-sm"> AB 3412 LL </p>
                                                     <p class="text-gray-600 text-xs"> Mobil </p>
                                                 </div>
                                             </td>
@@ -118,30 +149,30 @@ export default function MpAkademik() {
                                                 </div>
                                             </td>
 
-                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 12:30 </td>
-                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 19:23 </td>
+                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 456789 </td>
+                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> + </td>
                                         </tr>
 
-                                        <tr class="bg-gray-200/50 text-black text-sm font-normal text-left rtl:text-right">
-                                            <td class="text-sm font-bold pl-10 py-3.5"> 4 </td>
+                                        <tr class="text-black text-sm font-normal text-left rtl:text-right">
+                                            <td class="text-sm px-4 py-3.5 text-right"> 4 </td>
+                                            <td class="text-sm px-4 py-3.5 max-w-fit"> Michael Sitorus </td>
 
-                                            <td class="py-2.5 flex items-center gap-x-3 focus:outline-none">
+                                            <td class="px-4 py-2.5 flex items-center gap-x-3 focus:outline-none">
                                                 <div>
-                                                    <p class="font-bold text-gray-800 text-sm"> AB 1982 LL </p>
+                                                    <p class="font-bold text-sm"> AB 1982 LL </p>
                                                     <p class="text-gray-600 text-xs"> Motor </p>
                                                 </div>
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap">
-                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-pink-500 gap-x-2 bg-pink-200/50">
+                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-dark_blue gap-x-2 bg-light_blue/20">
                                                     Mahasiswa
                                                 </div>
                                             </td>
 
-                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 12:45 </td>
-                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 14:32 </td>
+                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 135791 </td>
+                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> + </td>
                                         </tr>
-
 
                                     </tbody>
                                     
