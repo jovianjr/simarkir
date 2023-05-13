@@ -11,10 +11,12 @@ export default function MpLapangan() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <section class="h-screen bg-white container px-4 mx-auto">
-                <div class="mt-6 md:flex md:items-center md:justify-between">
+            <section class="h-screen bg-white">
+
+                <div class="mr-10 ml-10 mt-6 mb-6 md:flex md:items-center md:justify-between">
                     <div>
-                        <h3 class="font-black">Log Parkir</h3>
+                        <h1 class="text-black mb-1">Log Parkir</h1>
+                        <p class="text-black">Daftar kendaraan masuk dan keluar DTETI hari ini</p>
                     </div>
 
                     <div class="relative flex items-center mt-4 md:mt-0">
@@ -32,23 +34,27 @@ export default function MpLapangan() {
                     </div>
                 </div>
 
-                <div class="mt-6 md:flex md:items-center md:justify-between font-xs">
-                    <div class="">
-                        <p class="font-bold">Motor</p>
-                        <p>20/20</p>
+                <div class="mr-10 ml-10 md:flex md:items-center md:justify-between">
+                    <div class= "md:flex md:items-center">
+                        <div class="mr-12">
+                            <h4>Motor</h4>
+                            <p>20/20</p>                            
+                        </div>
+
+                        <div class="mr-12">
+                            <h4>Mobil</h4>
+                            <p>20/20</p>
+                        </div>
                     </div>
 
-                    <div class="">
-                        <p class="font-bold">Mobil</p>
-                        <p>20/20</p>
-                    </div>
-                    <div class="">
-                        <p class="font-bold">Hari, tanggal</p>
+
+                    <div>
+                        <h4>Hari, tanggal</h4>
                         <p>23:00</p>
                     </div>
                 </div>
 
-                <div class="flex flex-col mt-6">
+                <div class="flex flex-col mr-10 ml-10 mt-4">
                     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                             <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
@@ -87,7 +93,7 @@ export default function MpLapangan() {
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap">
-                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-pink-500 gap-x-2 bg-pink-100/60">
+                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-pink-500 gap-x-2 bg-pink-200/50">
                                                     Mahasiswa
                                                 </div>
                                             </td>
@@ -107,7 +113,7 @@ export default function MpLapangan() {
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap">
-                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60">
+                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-200/50">
                                                     Dosen
                                                 </div>
                                             </td>
@@ -127,7 +133,7 @@ export default function MpLapangan() {
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap">
-                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60">
+                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-200/50">
                                                     Dosen
                                                 </div>
                                             </td>
@@ -147,7 +153,7 @@ export default function MpLapangan() {
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap">
-                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-pink-500 gap-x-2 bg-pink-100/60">
+                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-pink-500 gap-x-2 bg-pink-200/50">
                                                     Mahasiswa
                                                 </div>
                                             </td>

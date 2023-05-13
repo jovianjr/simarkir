@@ -3,31 +3,81 @@
 @tailwind utilities;
 
 @font-face {
-	font-family: 'Poppins';
-	src: url('../assets/fonts/poppins.otf')
+	font-family: 'Poppins-Regular';
+	src: url('../assets/fonts/Poppins-Regular.ttf')
 	format('opentype');
-	font-weight: 400;
 	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Poppins-Black';
+	src: url('../assets/fonts/Poppins-Black.ttf')
+	format('opentype');
+}
+
+@font-face {
+  font-family: 'Poppins-Bold';
+  src: url(../assets/fonts/Poppins-Bold.ttf)
+  format('opentype')
+}
+
+@font-face {
+  font-family: 'Poppins-ExtraBold';
+  src: url(../assets/fonts/Poppins-ExtraBold.ttf)
+  format('opentype')
+}
+
+@font-face {
+  font-family: 'Poppins-ExtraLight';
+  src: url(../assets/fonts/Poppins-ExtraLight.ttf)
+  format('opentype')
+}
+
+@font-face {
+  font-family: 'Poppins-Light';
+  src: url(../assets/fonts/Poppins-Light.ttf)
+  format('opentype')
+}
+
+@font-face {
+  font-family: 'Poppins-Medium';
+  src: url(../assets/fonts/Poppins-Medium.ttf)
+  format('opentype')
+}
+
+@font-face {
+  font-family: 'Poppins-SemiBold';
+  src: url(../assets/fonts/Poppins-SemiBold.ttf)
+  format('opentype')
+}
+
+@font-face {
+  font-family: 'Poppins-Italic';
+  src: url(../assets/fonts/Poppins-Italic.ttf)
+  format('opentype')
 }
 
 @layer base {
 
   html{
     font-family: Poppins, system-ui, sans-serif;
-
   }
 
   h1 {
-    @apply text-5xl font-bold mb-8;
+    font-family: "Poppins-ExtraBold", sans-serif;
+    @apply text-3xl;
   }
   h2 {
-    @apply text-4xl font-semibold mb-6;
+    font-family: "Poppins-Bold", sans-serif;
+    @apply text-2xl;
   }
   h3 {
-    @apply text-2xl font-medium mb-4 mt-6;
+    font-family: "Poppins-SemiBold", sans-serif;
+    @apply text-xl;
   }
   h4 {
-    @apply text-xl font-medium;
+    font-family: "Poppins-Bold", sans-serif;
+    @apply text-base font-medium;
   }
   h5 {
     @apply text-lg font-medium;
@@ -36,8 +86,10 @@
     @apply text-base font-medium;
   }
   p {
+    font-family: "Poppins-regular", sans-serif;
     @apply text-base;
   }
+
   li{
 	@apply text-base;	
   }
