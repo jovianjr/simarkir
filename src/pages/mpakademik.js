@@ -1,6 +1,7 @@
 import SideMenu from '@/Components/SideMenu'
 import Head from 'next/head'
 
+
 export default function MpAkademik() {
     return (
         <SideMenu>
@@ -15,8 +16,8 @@ export default function MpAkademik() {
                 
                 <div class="mr-10 ml-10 mt-6 mb-6 md:flex md:items-baseline md:justify-between">
                     <div>
-                        <h1 class="text-black mb-2">Daftar Kendaraan</h1>
-                        <p class="font-extralight text-sm text-gray-600"> Daftar kendaraan terdaftar sebagai milik civitas DTETI </p>
+                        <h1>Daftar Kendaraan</h1>
+                        <p class="subt"> Daftar kendaraan terdaftar sebagai milik civitas DTETI </p>
                     </div>
 
                     <div class="relative flex items-center mt-4 md:mt-0">
@@ -35,27 +36,44 @@ export default function MpAkademik() {
                 </div>
 
                 <div class="mr-10 ml-10 md:flex md:items-baseline md:justify-between inline-flex overflow-hidden">
-                    <div class="inline-flex overflow-hidden rounded-lg divide divide-x divide-white/20">                    
-                        <button class="px-5 py-2 text-xs font-medium text-white bg-gray-800">
+                    <div class="border-[1px] border-gray-800 inline-flex overflow-hidden rounded-lg divide divide-x divide-gray-800">
+                        <button
+                        class="px-5 py-2 text-xs font-medium text-black bg-white transition transition-200
+                        hover:text-white hover:bg-gray-800 active:text-white active:bg-gray-800">
                             Mobil
                         </button>
 
-                        <button class="px-5 py-2 text-xs font-medium text-white bg-gray-800">
+                        <button
+                        class="px-5 py-2 text-xs font-medium text-black bg-white transition transition-200
+                        hover:text-white hover:bg-gray-800 active:text-white active:bg-gray-800">
                             Motor
                         </button>
                     </div>
 
-                    <div class="inline-flex overflow-hidden rounded-lg divide divide-x divide-white/20">                    
-                        <button class="px-5 py-2 text-xs font-medium text-white bg-gray-800">
-                            Dosen
-                        </button>
+                    <div class="border-[1px] border-gray-800 inline-flex overflow-hidden rounded-lg divide divide-x divide-gray-800">                  
+                            <button
+                            class="px-5 py-2 text-xs font-medium text-black bg-white transition transition-200
+                            hover:text-white hover:bg-gray-800 active:text-white active:bg-gray-800">
+                                Dosen
+                            </button>
 
-                        <button class="px-5 py-2 text-xs font-medium text-white bg-gray-800">
-                            Mahasiswa
-                        </button>
+                            <button
+                            class="px-5 py-2 text-xs font-medium text-black bg-white transition transition-200
+                            hover:text-white hover:bg-gray-800 active:text-white active:bg-gray-800">
+                                Mahasiswa
+                            </button>
 
-                        <button class="px-5 py-2 text-xs font-medium text-white bg-gray-800">
-                            Tendik
+                            <button
+                            class="px-5 py-2 text-xs font-medium text-black bg-white transition transition-200
+                            hover:text-white hover:bg-gray-800 active:text-white active:bg-gray-800">
+                                Tendik
+                            </button>
+                    </div>
+
+                    <div>
+                        <button class="ml-1 inline-flex overflow-hidden rounded-lg divide divide-x divide-white/20">
+                            <div class="px-5 py-2 text-xs font-medium text-white bg-gray-800"> Tambah </div>
+                            <div alt="tambah" class="px-3 py-2 text-xs font-medium text-white bg-gray-800"> + </div>
                         </button>
                     </div>
                 </div>
@@ -63,15 +81,15 @@ export default function MpAkademik() {
                 <div class="flex flex-col mr-10 ml-10 mt-4">
                     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                            <div class="overflow-hidden border border-gray-200 dark:border-gray-200 md:rounded-lg">
+                            <div class="overflow-x-auto border border-gray-200 dark:border-gray-200 md:rounded-lg">
                                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-200">
 
                                     <thead class="bg-gray-200/50 dark:bg-gray-200/50">
                                         <tr class="text-black text-sm text-left rtl:text-right">
-                                            <th scope="col" class="font-normal px-4 py-3.5 text-right"> No </th>
-                                            <th scope="col" class="font-normal px-4 py-3.5"> Nama </th>
+                                            <th scope="col" class="text-right"> No </th>
+                                            <th scope="col"> Nama </th>
 
-                                            <th scope="col" class="font-normal px-4 py-3.5">
+                                            <th scope="col">
                                                 <button class="flex items-center gap-x-3 focus:outline-none">
                                                     <span>Kendaraan</span>
 
@@ -83,14 +101,14 @@ export default function MpAkademik() {
                                                 </button>
                                             </th>
 
-                                            <th scope="col" class="font-normal px-4 py-3.5"> Kelompok Civitas </th>
-                                            <th scope="col" class="font-normal px-4 py-3.5"> NIP/NIU </th>
-                                            <th scope="col" class="font-normal px-4 py-3.5"> Act </th>
+                                            <th scope="col"> Kelompok Civitas </th>
+                                            <th scope="col"> NIP/NIU </th>
+                                            <th scope="col"> Act </th>
                                         </tr>
                                     </thead>
 
-                                    <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-200 dark:bg-white">
-                                        <tr class="text-black text-sm font-normal text-left rtl:text-right">
+                                    <tbody class="divide-y divide-gray-200 dark:divide-gray-200">
+                                        <tr class="odd:bg-white even:bg-slate-50 text-black text-sm font-normal text-left rtl:text-right">
                                             <td class="text-sm px-4 py-3.5 text-right"> 1 </td>
                                             <td class="text-sm px-4 py-3.5 max-w-fit"> Michael Sitorus </td>
 
@@ -102,16 +120,23 @@ export default function MpAkademik() {
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap">
-                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-dark_blue gap-x-2 bg-light_blue/20">
-                                                    Mahasiswa
-                                                </div>
+                                                <div class="tendik"> Tendik </div>
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 123456 </td>
-                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> + </td>
+                                            <td class="px-4 py-3.5 text-sm">
+                                                <div class="inline-flex overflow-hidden rounded-lg divide divide-x divide-white/20">
+                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-emerald-500">
+                                                        +
+                                                    </button>
+                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-red">
+                                                        -
+                                                    </button>
+                                                </div>
+                                            </td>
                                         </tr>
                                         
-                                        <tr class="text-black text-sm font-normal text-left rtl:text-right">
+                                        <tr class="odd:bg-white even:bg-slate-50  text-black text-sm font-normal text-left rtl:text-right">
                                             <td class="text-sm px-4 py-3.5 text-right"> 2 </td>
                                             <td class="text-sm px-4 py-3.5 max-w-fit"> Michael Sitorus </td>
 
@@ -123,16 +148,23 @@ export default function MpAkademik() {
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap">
-                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-200/50">
-                                                    Dosen
-                                                </div>
+                                                <div class="dosen"> Dosen </div>
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 789123 </td>
-                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> + </td>
+                                            <td class="px-4 py-3.5 text-sm">
+                                                <div class="inline-flex overflow-hidden rounded-lg divide divide-x divide-white/20">
+                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-emerald-500">
+                                                        +
+                                                    </button>
+                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-red">
+                                                        -
+                                                    </button>
+                                                </div>
+                                            </td>
                                         </tr>
 
-                                        <tr class="text-black text-sm font-normal text-left rtl:text-right">
+                                        <tr class="odd:bg-white even:bg-slate-50 text-black text-sm font-normal text-left rtl:text-right">
                                             <td class="text-sm px-4 py-3.5 text-right"> 3 </td>
                                             <td class="text-sm px-4 py-3.5 max-w-fit"> Michael Sitorus </td>
 
@@ -144,16 +176,23 @@ export default function MpAkademik() {
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap">
-                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-200/50">
-                                                    Dosen
-                                                </div>
+                                                <div class="dosen"> Dosen </div>
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 456789 </td>
-                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> + </td>
+                                            <td class="px-4 py-3.5 text-sm">
+                                                <div class="inline-flex overflow-hidden rounded-lg divide divide-x divide-white/20">
+                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-emerald-500">
+                                                        +
+                                                    </button>
+                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-red">
+                                                        -
+                                                    </button>
+                                                </div>
+                                            </td>
                                         </tr>
 
-                                        <tr class="text-black text-sm font-normal text-left rtl:text-right">
+                                        <tr class="odd:bg-white even:bg-slate-200 text-black text-sm font-normal text-left rtl:text-right">
                                             <td class="text-sm px-4 py-3.5 text-right"> 4 </td>
                                             <td class="text-sm px-4 py-3.5 max-w-fit"> Michael Sitorus </td>
 
@@ -165,13 +204,20 @@ export default function MpAkademik() {
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap">
-                                                <div class="inline px-3 py-1 text-sm font-normal rounded-full text-dark_blue gap-x-2 bg-light_blue/20">
-                                                    Mahasiswa
-                                                </div>
+                                                <div class="mahasiswa"> Mahasiswa </div>
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 135791 </td>
-                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> + </td>
+                                            <td class="px-4 py-3.5 text-sm">
+                                                <div class="inline-flex overflow-hidden rounded-lg divide divide-x divide-white/20">
+                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-emerald-500">
+                                                        +
+                                                    </button>
+                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-red">
+                                                        -
+                                                    </button>
+                                                </div>
+                                            </td>
                                         </tr>
 
                                     </tbody>
