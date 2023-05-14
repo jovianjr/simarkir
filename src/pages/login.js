@@ -15,9 +15,11 @@ export default function Login() {
         <h4 className='text-white'>Login untuk melanjutkan</h4>
         <form className='flex flex-col px-8 pt-6 pb-10 mt-8 bg-slate rounded-xl drop-shadow-lg w-full md:w-1/2 lg:w-1/3'>
             <label for="femail" className='text-blue font-bold'>Email</label>
-            <input required type="email" id="femail" name="email" className='bg-white rounded-md py-2 px-4 text-base'/> <br/>
+            <input required type="email" id="femail" name="email" className='bg-white border border-gray-300 text-sm
+            rounded-lg bg-white text-base p-2.5 focus:outline-none focus:drop-shadow-lg hover:outline-none hover:drop-shadow-lg transition transition-200'/> <br/>
             <label for="password" className='text-blue font-bold'>Password</label>
-            <input required type="password" id="fpassword" name="fpassword" className='bg-white rounded-md py-2 px-4 text-base'/> <br/>
+            <input required type="password" id="fpassword" name="fpassword" className='bg-white border border-gray-300 text-sm
+            rounded-lg bg-white text-base p-2.5 focus:outline-none focus:drop-shadow-lg hover:outline-none hover:drop-shadow-lg transition transition-200'/> <br/>
             <input type="submit" value="Login" className='bg-blue text-white rounded-3xl text-bold py-2 px-4 text-base cursor-pointer'/>
         </form>
       </main>
