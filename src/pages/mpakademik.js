@@ -1,4 +1,6 @@
 import SideMenu from '@/Components/SideMenu'
+import DataEdit from '@/Components/dataedit'
+import DataAdd from '@/Components/dataadd'
 import Head from 'next/head'
 
 
@@ -12,9 +14,9 @@ export default function MpAkademik() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             
-            <section class="h-screen bg-white">
+            <section class="h-screen bg-white overflow-auto">
                 
-                <div class="mr-10 ml-10 mt-6 mb-6 md:flex md:items-baseline md:justify-between">
+                <div class="mt-6 mb-6 md:flex md:items-baseline md:justify-between">
                     <div>
                         <h1>Daftar Kendaraan</h1>
                         <p class="subt"> Daftar kendaraan terdaftar sebagai milik civitas DTETI </p>
@@ -35,7 +37,7 @@ export default function MpAkademik() {
                     </div>
                 </div>
 
-                <div class="mr-10 ml-10 md:flex md:items-baseline md:justify-between inline-flex overflow-hidden">
+                <div class="md:flex md:items-baseline md:justify-between inline-flex overflow-hidden">
                     <div class="border-[1px] border-gray-800 inline-flex overflow-hidden rounded-lg divide divide-x divide-gray-800">
                         <button
                         class="px-5 py-2 text-xs font-medium text-black bg-white transition transition-200
@@ -78,7 +80,7 @@ export default function MpAkademik() {
                     </div>
                 </div>
 
-                <div class="flex flex-col mr-10 ml-10 mt-4">
+                <div class="flex flex-col mt-4">
                     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                             <div class="overflow-x-auto border border-gray-200 dark:border-gray-200 md:rounded-lg">
