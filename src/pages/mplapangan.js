@@ -136,7 +136,7 @@ export default function MpLapangan() {
                                             </td>
 
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 12:30 </td>
-                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 19:23 </td>
+                                            <td class="px-4 py-3.5 text-sm whitespace-nowrap"> -- </td>
                                         </tr>
 
                                         <tr class="text-black text-sm font-normal text-left rtl:text-right">
@@ -156,7 +156,6 @@ export default function MpLapangan() {
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 12:45 </td>
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 14:32 </td>
                                         </tr>
-
 
                                     </tbody>
                                     

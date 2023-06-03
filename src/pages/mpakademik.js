@@ -126,11 +126,9 @@ export default function MpAkademik() {
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 123456 </td>
                                             <td class="px-4 py-3.5 text-sm">
                                                 <div class="inline-flex overflow-hidden rounded-lg divide divide-x divide-white/20">
-                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-emerald-500">
-                                                        +
-                                                    </button>
-                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-red">
-                                                        -
+                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-black bg-white transition transition-200
+                                                    hover:text-white hover:bg-gray-800 active:text-white active:bg-gray-800">
+                                                        Edit
                                                     </button>
                                                 </div>
                                             </td>
@@ -154,11 +152,10 @@ export default function MpAkademik() {
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 789123 </td>
                                             <td class="px-4 py-3.5 text-sm">
                                                 <div class="inline-flex overflow-hidden rounded-lg divide divide-x divide-white/20">
-                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-emerald-500">
-                                                        +
-                                                    </button>
-                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-red">
-                                                        -
+                                                    <button class="px-2.5 py-1.5
+                                                    text-xs font-medium text-black bg-white transition transition-200
+                                                    hover:text-white hover:bg-gray-800 active:text-white active:bg-gray-800">
+                                                        Edit
                                                     </button>
                                                 </div>
                                             </td>
@@ -182,11 +179,9 @@ export default function MpAkademik() {
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 456789 </td>
                                             <td class="px-4 py-3.5 text-sm">
                                                 <div class="inline-flex overflow-hidden rounded-lg divide divide-x divide-white/20">
-                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-emerald-500">
-                                                        +
-                                                    </button>
-                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-red">
-                                                        -
+                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-black bg-white transition transition-200
+                                                    hover:text-white hover:bg-gray-800 active:text-white active:bg-gray-800">
+                                                        Edit
                                                     </button>
                                                 </div>
                                             </td>
@@ -210,11 +205,9 @@ export default function MpAkademik() {
                                             <td class="px-4 py-3.5 text-sm whitespace-nowrap"> 135791 </td>
                                             <td class="px-4 py-3.5 text-sm">
                                                 <div class="inline-flex overflow-hidden rounded-lg divide divide-x divide-white/20">
-                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-emerald-500">
-                                                        +
-                                                    </button>
-                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-white bg-red">
-                                                        -
+                                                    <button class="px-2.5 py-1.5 text-xs font-medium text-black bg-white transition transition-200
+                                                    hover:text-white hover:bg-gray-800 active:text-white active:bg-gray-800">
+                                                        Edit
                                                     </button>
                                                 </div>
                                             </td>
