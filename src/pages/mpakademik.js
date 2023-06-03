@@ -59,19 +59,20 @@ export default function MpAkademik() {
 
 	return (
 		<SideMenu>
-			<Head>
-				<title>SIMARKIR</title>
-				<meta name="description" content="Simarkir: Sistem Manajemen Parkir" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
-
-			<section class="h-screen bg-white">
-				<div class="mb-6 ml-10 mr-10 mt-6 md:flex md:items-baseline md:justify-between">
-					<div>
-						<h1>Daftar Kendaraan</h1>
-						<p class="subt"> Daftar kendaraan terdaftar sebagai milik civitas DTETI </p>
-					</div>
+            <Head>
+                <title>SIMARKIR</title>
+                <meta name="description" content="Simarkir: Sistem Manajemen Parkir" />
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            
+            <section class="h-screen bg-white overflow-auto">
+                
+                <div class="mt-6 mb-6 md:flex md:items-baseline md:justify-between">
+                    <div>
+                        <h1>Daftar Kendaraan</h1>
+                        <p class="subt"> Daftar kendaraan terdaftar sebagai milik civitas DTETI </p>
+                    </div>
 
 					<div class="relative mt-4 flex items-center md:mt-0">
 						<span class="absolute">
@@ -102,7 +103,7 @@ export default function MpAkademik() {
 					</div>
 				</div>
 
-				<div class="ml-10 mr-10 inline-flex overflow-hidden md:flex md:items-baseline md:justify-between">
+				<div class=" inline-flex overflow-hidden md:flex md:items-baseline md:justify-between">
 					<div class="divide inline-flex divide-x divide-gray-800 overflow-hidden rounded-lg border-[1px] border-gray-800">
 						<button
 							class={`transition-200 bg-white px-5 py-2 text-xs font-medium text-black transition
@@ -178,7 +179,7 @@ export default function MpAkademik() {
 					</div>
 				</div>
 
-				<div class="ml-10 mr-10 mt-4 flex flex-col">
+				<div class="mt-4 flex flex-col">
 					<div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
 						<div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
 							<div class="overflow-x-auto border border-gray-200 dark:border-gray-200 md:rounded-lg">

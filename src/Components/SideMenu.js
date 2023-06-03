@@ -40,7 +40,7 @@ export default function SideMenu(props) {
 
 	return (
 		<section className="overview-x-hidden m-0 w-[100%] bg-white p-0">
-			<div className="absolute flex h-screen w-[27%] flex-col justify-between rounded-r-3xl bg-[url('../assets/images/main-bg-simarkir.webp')] py-14 text-white">
+			<div className="absolute flex min-h-full w-[27%] flex-col justify-between rounded-r-3xl bg-[url('../assets/images/main-bg-simarkir.webp')] py-14 text-white">
 				<section className="flex w-full flex-col justify-center px-8 py-0 text-center">
 					<div className="mb-6 flex w-full flex-col items-center">
 						<Image
@@ -60,7 +60,7 @@ export default function SideMenu(props) {
 					</div>
 					<div className="flex w-full flex-col gap-2 text-left">
 						<Link
-							href="/"
+							href="/dashboard"
 							className="flex w-full items-center gap-2 rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md"
 						>
 							<Image src="/home.svg" alt="Simbol Parkir" className="mb-2" height={30} width={30} />
