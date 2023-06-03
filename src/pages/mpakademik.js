@@ -6,6 +6,7 @@ export default function MpAkademik() {
 	const [kendaraanData, setKendaraanData] = useState([]);
 	const [jenisFilter, setJenisFilter] = useState('');
 	const [kategoriFilter, setKategoriFilter] = useState('');
+	const [searchQuery, setSearchQuery] = useState('');
 
 	useEffect(() => {
 		const fetchKendaraanData = async () => {
@@ -34,11 +35,23 @@ export default function MpAkademik() {
 		else setKategoriFilter(kategori);
 	};
 
+	const handleSearch = (event) => {
+		setSearchQuery(event.target.value);
+	};
+
 	const filteredKendaraan = kendaraanData.filter((kendaraan) => {
 		if (jenisFilter && kendaraan.jenis_kendaraan.toLowerCase() !== jenisFilter) {
 			return false;
 		}
 		if (kategoriFilter && kendaraan.kategori_civitas !== kategoriFilter) {
+			return false;
+		}
+		if (
+			searchQuery &&
+			!kendaraan.nama.toLowerCase().includes(searchQuery.toLowerCase()) &&
+			!kendaraan.nomor_kendaraan.toLowerCase().includes(searchQuery.toLowerCase()) &&
+			!kendaraan.nomor_identitas.toLowerCase().includes(searchQuery.toLowerCase())
+		) {
 			return false;
 		}
 		return true;
@@ -83,7 +96,8 @@ export default function MpAkademik() {
 							class="placeholder-gray placeholder-font-bold block w-full rounded-full border border-gray-200 py-1.5
                         pl-11 pr-5 text-black focus:border-gray-200 focus:outline-none focus:ring focus:ring-gray-200 focus:ring-opacity-40
                         rtl:pl-5 rtl:pr-11 md:w-80"
-						/>{' '}
+							onChange={handleSearch}
+						/>
 						<br />
 					</div>
 				</div>
