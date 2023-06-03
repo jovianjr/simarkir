@@ -1,28 +1,80 @@
-import Head from 'next/head'
-
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 export default function Login() {
-  return (
-    <>
-      <Head>
-        <title>SIMARKIR</title>
-        <meta name="description" content="Simarkir: Sistem Manajemen Parkir" />
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main className="bg-[url('../assets/images/main-bg-simarkir.webp')] w-screen h-screen bg-cover flex flex-col justify-center items-center p-12">
-        <h1 className="text-3xl font-bold text-white leading-3 mb-4">Selamat Datang!</h1>
-        <h4 className='text-white'>Login untuk melanjutkan</h4>
-        <form className='flex flex-col px-8 pt-6 pb-10 mt-8 bg-slate rounded-xl drop-shadow-lg w-full md:w-1/2 lg:w-1/3'>
-            <label for="femail" className='text-blue font-bold'>Email</label>
-            <input required type="email" id="femail" name="email" className='bg-white border border-gray-300 text-sm
-            rounded-lg bg-white text-base p-2.5 focus:outline-none focus:drop-shadow-lg hover:outline-none hover:drop-shadow-lg transition transition-200'/> <br/>
-            <label for="password" className='text-blue font-bold'>Password</label>
-            <input required type="password" id="fpassword" name="fpassword" className='bg-white border border-gray-300 text-sm
-            rounded-lg bg-white text-base p-2.5 focus:outline-none focus:drop-shadow-lg hover:outline-none hover:drop-shadow-lg transition transition-200'/> <br/>
-            <input type="submit" value="Login" className='bg-blue text-white rounded-3xl text-bold py-2 px-4 text-base cursor-pointer'/>
-        </form>
-      </main>
-    </>
-  )
+	const [username, setUsername] = useState('');
+	const [password, setPassword] = useState('');
+
+	const router = useRouter();
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		const response = await fetch('/api/auth/login', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ username, password }),
+		});
+
+		if (response.ok) {
+			const data = await response.json();
+			const token = data.token;
+
+			// Store the token in localStorage
+			localStorage.setItem('token', token);
+
+			window.location.href = '/';
+		} else {
+			const data = await response.json();
+			console.log(data.message);
+		}
+	};
+
+	return (
+		<>
+			<Head>
+				<title>SIMARKIR</title>
+				<meta name="description" content="Simarkir: Sistem Manajemen Parkir" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
+			<main className="flex h-screen w-screen flex-col items-center justify-center bg-[url('../assets/images/main-bg-simarkir.webp')] bg-cover p-12">
+				<h1 className="mb-4 text-3xl font-bold leading-3 text-white">Selamat Datang!</h1>
+				<h4 className="text-white">Login untuk melanjutkan</h4>
+				<form
+					onSubmit={handleSubmit}
+					className="mt-8 flex w-full flex-col rounded-xl bg-slate px-8 pb-10 pt-6 drop-shadow-lg md:w-1/2 lg:w-1/3"
+				>
+					<label for="username" className="font-bold text-blue">
+						username
+					</label>
+					<input
+						required
+						type="username"
+						placeholder="username"
+						value={username}
+						onChange={(e) => setUsername(e.target.value)}
+						className="rounded-lg border border-gray-300 bg-white p-2.5 text-base transition duration-200 hover:outline-none hover:drop-shadow-lg focus:outline-none focus:drop-shadow-lg"
+					/>
+					<label for="password" className="font-bold text-blue">
+						Password
+					</label>
+					<input
+						type="password"
+						placeholder="Password"
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+						className="rounded-lg border border-gray-300 bg-white p-2.5 text-base text-sm transition duration-200 hover:outline-none hover:drop-shadow-lg focus:outline-none focus:drop-shadow-lg"
+					/>
+					<button
+						type="submit"
+						className="text-bold cursor-pointer rounded-3xl bg-blue px-4 py-2 text-base text-white"
+					>
+						Login
+					</button>
+				</form>
+			</main>
+		</>
+	);
 }
