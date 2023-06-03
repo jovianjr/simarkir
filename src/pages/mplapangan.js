@@ -12,8 +12,8 @@ export default function MpLapangan() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <section class="h-screen bg-white">
-                <div class="mr-10 ml-10 mt-6 mb-6 md:flex md:items-baseline md:justify-between">
+            <section class="h-screen bg-white overflow-auto">
+                <div class="mt-6 mb-6 md:flex md:items-baseline md:justify-between">
                     <div>
                         <h1>Log Parkir</h1>
                         <p class="subt">Daftar kendaraan masuk dan keluar DTETI hari ini</p>
@@ -34,7 +34,7 @@ export default function MpLapangan() {
                     </div>
                 </div>
 
-                <div class="mr-10 ml-10 md:flex md:items-center md:justify-between">
+                <div class="md:flex md:items-center md:justify-between">
                     <div class= "md:flex md:items-center">
 
                         <div class="mr-3 divide-x divide-white/5 rounded-lg text-white bg-red md:flex md:items-center md:justify-between">
@@ -56,7 +56,7 @@ export default function MpLapangan() {
                     </div>
                 </div>
 
-                <div class="flex flex-col mr-10 ml-10 mt-4">
+                <div class="flex flex-col mt-4">
                     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                             <div class="overflow-hidden border border-gray-200 dark:border-gray-200 md:rounded-lg">
