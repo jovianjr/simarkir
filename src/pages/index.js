@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <SideMenu>
       <Head>
-        <title>SIMARKIR: Sistem Manajemen Parkir</title>
+        <title>SIMARKIR</title>
         <meta name="description" content="Simarkir: Sistem Manajemen Parkir UGM" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="icon" href="/favicon.ico" />
