@@ -60,7 +60,7 @@ export default function SideMenu(props) {
 					</div>
 					<div className="flex w-full flex-col gap-2 text-left">
 						<Link
-							href="/"
+							href="/dashboard"
 							className="flex w-full items-center gap-2 rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md"
 						>
 							<Image src="/home.svg" alt="Simbol Parkir" className="mb-2" height={30} width={30} />
