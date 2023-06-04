@@ -10,7 +10,10 @@ export default async function handler(req, res) {
 		const { username, password } = req.body;
 
 		// Retrieve the user from the database based on the username
-		const user = await db.oneOrNone('SELECT * FROM account WHERE username = $1', username);
+		const user = await db.oneOrNone(
+			'SELECT a.id, a.username, a.password, r.name as role_name FROM account a, role r  where a.role_id = r.id and username  = $1',
+			username
+		);
 
 		if (!user) {
 			return res.status(401).json({ message: 'Invalid username or password' });
@@ -24,7 +27,7 @@ export default async function handler(req, res) {
 		}
 
 		// Generate a JWT token
-		const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
+		const token = jwt.sign({ userId: user.id }, process.env.NEXT_PUBLIC_JWT_SECRET, {
 			expiresIn: '1h',
 		});
 

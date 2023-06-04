@@ -14,8 +14,6 @@ export default function MpAkademik() {
 				const response = await fetch('/api/kendaraan');
 				const data = await response.json();
 
-				console.log(data);
-
 				setKendaraanData(data);
 			} catch (error) {
 				console.error(error);
@@ -59,20 +57,19 @@ export default function MpAkademik() {
 
 	return (
 		<SideMenu>
-            <Head>
-                <title>SIMARKIR</title>
-                <meta name="description" content="Simarkir: Sistem Manajemen Parkir" />
-                <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            
-            <section class="h-screen bg-white overflow-auto">
-                
-                <div class="mt-6 mb-6 md:flex md:items-baseline md:justify-between">
-                    <div>
-                        <h1>Daftar Kendaraan</h1>
-                        <p class="subt"> Daftar kendaraan terdaftar sebagai milik civitas DTETI </p>
-                    </div>
+			<Head>
+				<title>SIMARKIR</title>
+				<meta name="description" content="Simarkir: Sistem Manajemen Parkir" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
+
+			<section class="h-screen overflow-auto bg-white">
+				<div class="mb-6 mt-6 md:flex md:items-baseline md:justify-between">
+					<div>
+						<h1>Daftar Kendaraan</h1>
+						<p class="subt"> Daftar kendaraan terdaftar sebagai milik civitas DTETI </p>
+					</div>
 
 					<div class="relative mt-4 flex items-center md:mt-0">
 						<span class="absolute">

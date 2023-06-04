@@ -5,6 +5,7 @@ import Link from 'next/link';
 export default function SideMenu(props) {
 	const [motor, setMotor] = useState([]);
 	const [mobil, setMobil] = useState([]);
+	const [role, setRole] = useState();
 
 	useEffect(() => {
 		const fetchLogCount = async () => {
@@ -36,6 +37,9 @@ export default function SideMenu(props) {
 		};
 
 		fetchLogCount();
+
+		const getRole = localStorage.getItem('role');
+		setRole(getRole);
 	}, []);
 
 	const date = new Date();
@@ -75,25 +79,35 @@ export default function SideMenu(props) {
 							<Image src="/home.svg" alt="Simbol Parkir" className="mb-2" height={30} width={30} />
 							<p className="text-[14px]">Dashboard</p>
 						</Link>
+						{role === 'parkir' ? (
+							<Link
+								href="/mplapangan"
+								className="flex w-full items-center gap-2 rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md"
+							>
+								<Image src="/car.svg" alt="Simbol Parkir" className="mb-2" height={30} width={30} />
+								<p className="text-[14px]">Manajemen Parkir</p>
+							</Link>
+						) : null}
+						{role === 'akademik' ? (
+							<Link
+								href="/mpakademik"
+								className="flex w-full items-center gap-2 rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md"
+							>
+								<Image
+									src="/search.svg"
+									alt="Simbol Parkir"
+									className="mb-2"
+									height={30}
+									width={30}
+								/>
+								<p className="text-[14px]">Manajemen Kendaraan</p>
+							</Link>
+						) : null}
 						<Link
-							href="/mplapangan"
-							className="flex w-full items-center gap-2 rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md"
+							href="/logout"
+							className="flex w-full items-center gap-2 rounded-sm bg-[#DE2C13] px-4 py-2 drop-shadow-md hover:bg-rose-500"
 						>
-							<Image src="/car.svg" alt="Simbol Parkir" className="mb-2" height={30} width={30} />
-							<p className="text-[14px]">Manajemen Kendaraan</p>
-						</Link>
-						<Link
-							href="/mpakademik"
-							className="flex w-full items-center gap-2 rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md"
-						>
-							<Image
-								src="/search.svg"
-								alt="Simbol Parkir"
-								className="mb-2"
-								height={30}
-								width={30}
-							/>
-							<p className="text-[14px]">Register</p>
+							<p className="text-[14px] text-white">Log out</p>
 						</Link>
 					</div>
 				</section>

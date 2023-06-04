@@ -23,8 +23,9 @@ export default function Login() {
 
 			// Store the token in localStorage
 			localStorage.setItem('token', token);
+			localStorage.setItem('role', data.role_name);
 
-			window.location.href = '/';
+			router.push('/');
 		} else {
 			const data = await response.json();
 			console.log(data.message);
@@ -44,7 +45,7 @@ export default function Login() {
 				<h4 className="text-white">Login untuk melanjutkan</h4>
 				<form
 					onSubmit={handleSubmit}
-					className="mt-8 flex w-full flex-col rounded-xl bg-slate px-8 pb-10 pt-6 drop-shadow-lg md:w-1/2 lg:w-1/3"
+					className="mt-8 flex w-full flex-col gap-1 rounded-xl bg-slate px-8 pb-10 pt-6 drop-shadow-lg md:w-1/2 lg:w-1/3"
 				>
 					<label for="username" className="font-bold text-blue">
 						username
@@ -69,7 +70,7 @@ export default function Login() {
 					/>
 					<button
 						type="submit"
-						className="text-bold cursor-pointer rounded-3xl bg-blue px-4 py-2 text-base text-white"
+						className="text-bold mt-4 cursor-pointer rounded-3xl bg-blue px-4 py-2 text-base text-white"
 					>
 						Login
 					</button>
