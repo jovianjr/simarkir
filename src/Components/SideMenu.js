@@ -38,6 +38,15 @@ export default function SideMenu(props) {
 		fetchLogCount();
 	}, []);
 
+	const date = new Date();
+
+	const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+	const dateString = date.toLocaleDateString('id-ID', options);
+
+	const hours = String(date.getHours()).padStart(2, '0');
+	const minutes = String(date.getMinutes()).padStart(2, '0');
+	const timeString = `${hours}:${minutes}`;
+
 	return (
 		<section className="overview-x-hidden m-0 w-[100%] bg-white p-0">
 			<div className="absolute flex min-h-full w-[27%] flex-col justify-between rounded-r-3xl bg-[url('../assets/images/main-bg-simarkir.webp')] py-14 text-white">
@@ -53,14 +62,14 @@ export default function SideMenu(props) {
 						<h1 className="mb-3 text-[24px] font-bold leading-3">Simarkir</h1>
 						<p className="mb-4 text-[12px] font-thin">Sistem Manajemen Parkir DTETI</p>
 						<p className="text-[16px]">
-							Senin, 12 Maret 2023
+							{dateString}
 							<br />
-							15:00
+							{timeString}
 						</p>
 					</div>
 					<div className="flex w-full flex-col gap-2 text-left">
 						<Link
-							href="/dashboard"
+							href="/"
 							className="flex w-full items-center gap-2 rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md"
 						>
 							<Image src="/home.svg" alt="Simbol Parkir" className="mb-2" height={30} width={30} />

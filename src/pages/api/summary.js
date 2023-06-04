@@ -4,14 +4,24 @@ export default async function handler(req, res) {
 	if (req.method === 'GET') {
 		try {
 			const query = `
-			SELECT COUNT(lk.id), k.jenis_kendaraan, p.nama, p.kapasitas
-			FROM log_kendaraan lk
-			JOIN kendaraan k ON lk.kendaraan_id = k.id
-			JOIN parkir p ON lk.parkiran_id = p.id
-			WHERE 
-			DATE_TRUNC('day', lk.waktu_masuk) = CURRENT_DATE
-			and DATE_TRUNC('day', lk.waktu_keluar) = CURRENT_DATE  
-			GROUP BY k.jenis_kendaraan, p.nama, p.kapasitas
+			select
+				COUNT(lk.id),
+				k.jenis_kendaraan,
+				p.nama,
+				p.kapasitas
+			from
+				log_kendaraan lk
+			join kendaraan k on
+				lk.kendaraan_id = k.id
+			join parkir p on
+				lk.parkiran_id = p.id
+			where 
+				DATE_TRUNC('day', lk.waktu_masuk) = CURRENT_DATE
+				and lk.waktu_keluar is null
+			group by
+				k.jenis_kendaraan,
+				p.nama,
+				p.kapasitas
       `;
 			const result = await db.any(query);
 
