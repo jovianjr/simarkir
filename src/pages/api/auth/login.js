@@ -31,6 +31,6 @@ export default async function handler(req, res) {
 			expiresIn: '1h',
 		});
 
-		return res.status(200).json({ message: 'Login successful', token });
+		return res.status(200).json({ message: 'Login successful', token, role: user.role_name });
 	}
 }

@@ -23,7 +23,7 @@ export default function Login() {
 
 			// Store the token in localStorage
 			localStorage.setItem('token', token);
-			localStorage.setItem('role', data.role_name);
+			localStorage.setItem('role', data.role);
 
 			router.push('/');
 		} else {
