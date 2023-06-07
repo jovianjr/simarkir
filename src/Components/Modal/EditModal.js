@@ -1,8 +1,27 @@
-export default function DataEdit({ closeModal = () => {} }) {
+import axios from 'axios';
+
+export default function DataEdit({ data = {}, closeModal = () => {}, refresh = () => {} }) {
+	const handleFormSubmit = async (event) => {
+		event.preventDefault();
+
+		try {
+			await axios.put('/api/kendaraan', {
+				id: data?.id,
+				nomor_kendaraan: event.target[3].value,
+				jenis_kendaraan: event.target[4].value,
+			});
+
+			closeModal();
+			refresh();
+		} catch (error) {
+			console.error(error);
+			alert('Terjadi kesalahan saat menyimpan data kendaraan.');
+		}
+	};
 	return (
 		<section>
 			<div className="mx-auto max-w-2xl rounded-lg border border-gray-200 bg-white p-16 drop-shadow-lg">
-				<form>
+				<form onSubmit={handleFormSubmit}>
 					<div className="mb-5">
 						<h1>Edit Kendaraan</h1>
 						<p className="subt">Ubah detail kendaraan milik civitas DTETI.</p>
@@ -13,13 +32,13 @@ export default function DataEdit({ closeModal = () => {} }) {
 							Nama
 						</label>
 						<input
-							id="name"
+							id="id"
+							name="nama"
 							type="text"
-							className="transition-200 w-full rounded-lg border border-gray-300 bg-white
-                            p-2.5 text-sm text-black transition hover:outline-none
-                            hover:drop-shadow-lg focus:outline-none"
-							placeholder="Nama Lengkap"
-							required
+							className="transition-200 w-full rounded-lg border border-gray-300 bg-gray-200 p-2.5 text-sm text-black transition hover:outline-none hover:drop-shadow-lg focus:outline-none"
+							placeholder="Nama"
+							value={data?.nama}
+							readOnly
 						/>
 					</div>
 
@@ -30,31 +49,28 @@ export default function DataEdit({ closeModal = () => {} }) {
 							</label>
 							<input
 								id="id"
-								type="number"
-								maxLength="6"
-								className="transition-200 w-full rounded-lg border border-gray-300 bg-white
-                            p-2.5 text-sm text-black transition hover:outline-none
-                            hover:drop-shadow-lg focus:outline-none"
-								placeholder="123456"
-								required
+								name="nomor_identitas"
+								type="text"
+								className="transition-200 w-full rounded-lg border border-gray-300 bg-gray-200 p-2.5 text-sm text-black transition hover:outline-none hover:drop-shadow-lg focus:outline-none"
+								placeholder="XX/123456/YY/00000"
+								value={data?.nomor_identitas}
+								readOnly
 							/>
 						</div>
 
 						<div>
-							<label htmlFor="klmpkcivitas" className="label">
+							<label htmlFor="civitas" className="label">
 								Kelompok Civitas
 							</label>
-							<select
-								id="klmpkcivitas"
-								className="transition-200 w-full rounded-lg border border-gray-300 bg-white
-                            p-2.5 text-sm text-black transition hover:outline-none
-                            hover:drop-shadow-lg focus:outline-none"
-								required
-							>
-								<option value="dosen">Dosen</option>
-								<option value="tendik">Tendik</option>
-								<option value="mahasiswa">Mahasiswa</option>
-							</select>
+							<input
+								id="civitas"
+								name="civitas"
+								type="text"
+								className="transition-200 w-full rounded-lg border border-gray-300 bg-gray-200 p-2.5 text-sm text-black transition hover:outline-none hover:drop-shadow-lg focus:outline-none"
+								placeholder="Civitas"
+								value={data?.kategori_civitas}
+								readOnly
+							/>
 						</div>
 
 						<div>
@@ -62,12 +78,12 @@ export default function DataEdit({ closeModal = () => {} }) {
 								Nomor Kendaraan
 							</label>
 							<input
+								name="no_kendaraan"
 								id="nokendaraan"
 								type="text"
-								className="transition-200 w-full rounded-lg border border-gray-300 bg-white
-                            p-2.5 text-sm text-black transition hover:outline-none
-                            hover:drop-shadow-lg focus:outline-none"
+								className="transition-200 w-full rounded-lg border border-gray-300 !bg-white p-2.5 text-sm text-black transition hover:outline-none hover:drop-shadow-lg focus:outline-none"
 								placeholder="AA 1234 BB"
+								defaultValue={data?.nomor_kendaraan}
 								required
 							/>
 						</div>
@@ -77,55 +93,34 @@ export default function DataEdit({ closeModal = () => {} }) {
 								Jenis Kendaraan
 							</label>
 							<select
+								name="jenis_kendaraan"
 								id="kendaraan"
-								className="transition-200 w-full rounded-lg border border-gray-300 bg-white
-                            p-2.5 text-sm text-black transition hover:outline-none
-                            hover:drop-shadow-lg focus:outline-none"
+								className="transition-200 w-full rounded-lg border border-gray-300 !bg-white p-2.5 text-sm text-black transition hover:outline-none hover:drop-shadow-lg focus:outline-none"
 								required
 							>
-								<option value="mobil">Mobil</option>
-								<option value="motor">Motor</option>
+								<option value="mobil" selected={data?.jenis_kendaraan === 'mobil'}>
+									Mobil
+								</option>
+								<option value="motor" selected={data?.jenis_kendaraan === 'motor'}>
+									Motor
+								</option>
+								{/* <option value="mobil" {data?.jenis_kendaraan === 'mobil' ? 'selected' : ''}>Mobil</option>
+								<option value="motor" {data?.jenis_kendaraan === 'motor' ? 'selected' : ''}>Motor</option> */}
 							</select>
 						</div>
-					</div>
-
-					<div className="mb-6">
-						<label htmlFor="email" className="label">
-							Email
-						</label>
-						<input
-							type="email"
-							id="email"
-							className="transition-200 w-full rounded-lg border border-gray-300 bg-white
-                        p-2.5 text-sm text-black  transition hover:outline-none
-                        hover:drop-shadow-lg focus:outline-none"
-							placeholder="email@mail.ugm.ac.id"
-							required
-						/>
 					</div>
 
 					<div className="inline-flex min-w-full overflow-hidden md:flex md:items-baseline md:justify-end">
 						<button
 							type="submit"
-							className="transition-200 mr-2 mt-5 w-min rounded-lg border border-gray-800 bg-white
-                            px-5 py-2 text-sm font-bold text-gray-800 drop-shadow-lg
-                            transition hover:bg-gray-800 hover:text-white hover:drop-shadow-lg"
+							className="transition-200 mt-5 w-min rounded-lg border border-gray-800 bg-white px-5 py-2 text-sm font-bold text-gray-800 drop-shadow-lg transition hover:bg-gray-800 hover:text-white hover:drop-shadow-lg"
 						>
 							Submit
 						</button>
 
 						<button
-							type="delete"
-							className="transition-200 mr-2 mt-5 w-min rounded-lg bg-white px-5 py-2
-                            text-sm font-bold text-gray-800
-                            transition hover:bg-red hover:text-white hover:drop-shadow-lg"
-						>
-							Hapus
-						</button>
-
-						<button
 							type="cancel"
-							className="mt-5 min-w-0 px-5 py-2 text-sm font-bold text-gray-800"
+							className="ml-2 mt-5 min-w-0 px-5 py-2 text-sm font-bold text-gray-800"
 							onClick={closeModal}
 						>
 							Batal

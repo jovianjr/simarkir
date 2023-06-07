@@ -10,6 +10,7 @@ export default function Akademik() {
 	const [jenisFilter, setJenisFilter] = useState('');
 	const [kategoriFilter, setKategoriFilter] = useState('');
 	const [searchQuery, setSearchQuery] = useState('');
+	const [refresh, setRefresh] = useState(false);
 
 	useEffect(() => {
 		const fetchKendaraanData = async () => {
@@ -24,7 +25,7 @@ export default function Akademik() {
 		};
 
 		fetchKendaraanData();
-	}, []);
+	}, [refresh]);
 
 	const handleJenisFilter = (jenis) => {
 		if (jenis === jenisFilter) setJenisFilter();
@@ -72,10 +73,14 @@ export default function Akademik() {
 
 			<section className="h-screen overflow-auto bg-white">
 				<Modal isShow={showAddModal} closeModal={() => setShowAddModal(false)}>
-					<DataAdd closeModal={() => setShowAddModal(false)} />
+					<DataAdd closeModal={() => setShowAddModal(false)} refresh={() => setRefresh(!refresh)} />
 				</Modal>
-				<Modal isShow={showEditModal} closeModal={() => setShowEditModal(false)}>
-					<DataEdit closeModal={() => setShowEditModal(false)} />
+				<Modal isShow={!!showEditModal} closeModal={() => setShowEditModal(false)}>
+					<DataEdit
+						data={showEditModal}
+						closeModal={() => setShowEditModal(false)}
+						refresh={() => setRefresh(!refresh)}
+					/>
 				</Modal>
 				<div className="mb-6 mt-6 md:flex md:items-baseline md:justify-between">
 					<div>
@@ -246,7 +251,7 @@ export default function Akademik() {
 														<button
 															className="transition-200 bg-white px-2.5 py-1.5 text-xs font-medium text-black transition
                                                     hover:bg-gray-800 hover:text-white active:bg-gray-800 active:text-white"
-															onClick={() => setShowEditModal(true)}
+															onClick={() => setShowEditModal(kendaraan)}
 														>
 															Edit
 														</button>

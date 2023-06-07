@@ -1,8 +1,73 @@
-export default function DataAdd({ closeModal = () => {} }) {
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Select from 'react-select';
+
+export default function DataAdd({ closeModal = () => {}, refresh = () => {} }) {
+	const [civitasData, setCivitasData] = useState([]);
+	const [selectedId, setSelectedId] = useState();
+	const [selectedNama, setSelectedNama] = useState('');
+	const [selectedNomorIdentitas, setSelectedNomorIdentitas] = useState('');
+	const [selectedKategoriCivitas, setSelectedKategoriCivitas] = useState('');
+
+	useEffect(() => {
+		fetchCivitasData();
+	}, []);
+
+	const fetchCivitasData = async () => {
+		try {
+			const response = await axios.get('/api/civitas');
+			setCivitasData(response.data);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	const handleNamaChange = (selectedOption) => {
+		setSelectedId(selectedOption.value);
+		setSelectedNama(selectedOption.label);
+
+		const selectedCivitas = civitasData.find((civitas) => civitas.id === selectedOption.value);
+
+		if (selectedCivitas) {
+			setSelectedNomorIdentitas(selectedCivitas.nomor_identitas);
+			setSelectedKategoriCivitas(selectedCivitas.kategori_civitas);
+		} else {
+			setSelectedNomorIdentitas('');
+			setSelectedKategoriCivitas('');
+		}
+	};
+
+	const options = civitasData.map((civitas) => ({
+		value: civitas.id,
+		label: civitas.nama,
+	}));
+
+	const handleFormSubmit = async (event) => {
+		event.preventDefault();
+
+		try {
+			await axios.post('/api/kendaraan', {
+				civitas_id: selectedId,
+				nomor_kendaraan: event.target[3].value,
+				jenis_kendaraan: event.target[4].value,
+			});
+
+			// Reset form or show success message
+			setSelectedId();
+			setSelectedNama('');
+			setSelectedNomorIdentitas('');
+			setSelectedKategoriCivitas('');
+			closeModal();
+			refresh();
+		} catch (error) {
+			console.error(error);
+			alert('Terjadi kesalahan saat menyimpan data kendaraan.');
+		}
+	};
 	return (
 		<section>
 			<div className="mx-auto max-w-2xl rounded-lg border border-gray-200 bg-white p-16 drop-shadow-lg">
-				<form>
+				<form onSubmit={handleFormSubmit}>
 					<div className="mb-5">
 						<h1>Tambah Kendaraan</h1>
 						<p className="subt">Menambahkan daftar kendaraan milik civitas DTETI.</p>
@@ -12,14 +77,13 @@ export default function DataAdd({ closeModal = () => {} }) {
 						<label htmlFor="name" className="label">
 							Nama
 						</label>
-						<input
-							id="name"
-							type="text"
-							className="transition-200 w-full rounded-lg border border-gray-300 bg-white
-                            p-2.5 text-sm text-black transition hover:outline-none
-                            hover:drop-shadow-lg focus:outline-none"
-							placeholder="Nama Lengkap"
-							required
+						<Select
+							options={options}
+							value={{ value: selectedId, label: selectedNama }}
+							onChange={handleNamaChange}
+							isSearchable
+							placeholder="Pilih Nama"
+							className="transition-200 w-full rounded-lg border border-gray-300 bg-white p-2.5 text-sm text-black transition hover:outline-none hover:drop-shadow-lg focus:outline-none"
 						/>
 					</div>
 
@@ -30,31 +94,28 @@ export default function DataAdd({ closeModal = () => {} }) {
 							</label>
 							<input
 								id="id"
-								type="number"
-								maxLength="6"
-								className="transition-200 w-full rounded-lg border border-gray-300 bg-white
-                            p-2.5 text-sm text-black transition hover:outline-none
-                            hover:drop-shadow-lg focus:outline-none"
-								placeholder="123456"
-								required
+								name="nomor_identitas"
+								type="text"
+								className="transition-200 w-full rounded-lg border border-gray-300 bg-white p-2.5 text-sm text-black transition hover:outline-none hover:drop-shadow-lg focus:outline-none"
+								placeholder="XX/123456/YY/00000"
+								value={selectedNomorIdentitas}
+								readOnly
 							/>
 						</div>
 
 						<div>
-							<label htmlFor="klmpkcivitas" className="label">
+							<label htmlFor="civitas" className="label">
 								Kelompok Civitas
 							</label>
-							<select
-								id="klmpkcivitas"
-								className="transition-200 w-full rounded-lg border border-gray-300 bg-white
-                            p-2.5 text-sm text-black transition hover:outline-none
-                            hover:drop-shadow-lg focus:outline-none"
-								required
-							>
-								<option value="dosen">Dosen</option>
-								<option value="tendik">Tendik</option>
-								<option value="mahasiswa">Mahasiswa</option>
-							</select>
+							<input
+								id="civitas"
+								name="civitas"
+								type="text"
+								className="transition-200 w-full rounded-lg border border-gray-300 bg-white p-2.5 text-sm text-black transition hover:outline-none hover:drop-shadow-lg focus:outline-none"
+								placeholder="Civitas"
+								value={selectedKategoriCivitas}
+								readOnly
+							/>
 						</div>
 
 						<div>
@@ -62,11 +123,10 @@ export default function DataAdd({ closeModal = () => {} }) {
 								Nomor Kendaraan
 							</label>
 							<input
+								name="no_kendaraan"
 								id="nokendaraan"
 								type="text"
-								className="transition-200 w-full rounded-lg border border-gray-300 bg-white
-                            p-2.5 text-sm text-black transition hover:outline-none
-                            hover:drop-shadow-lg focus:outline-none"
+								className="transition-200 w-full rounded-lg border border-gray-300 !bg-white p-2.5 text-sm text-black transition hover:outline-none hover:drop-shadow-lg focus:outline-none"
 								placeholder="AA 1234 BB"
 								required
 							/>
@@ -77,10 +137,9 @@ export default function DataAdd({ closeModal = () => {} }) {
 								Jenis Kendaraan
 							</label>
 							<select
+								name="jenis_kendaraan"
 								id="kendaraan"
-								className="transition-200 w-full rounded-lg border border-gray-300 bg-white
-                            p-2.5 text-sm text-black transition hover:outline-none
-                            hover:drop-shadow-lg focus:outline-none"
+								className="transition-200 w-full rounded-lg border border-gray-300 !bg-white p-2.5 text-sm text-black transition hover:outline-none hover:drop-shadow-lg focus:outline-none"
 								required
 							>
 								<option value="mobil">Mobil</option>
@@ -89,27 +148,10 @@ export default function DataAdd({ closeModal = () => {} }) {
 						</div>
 					</div>
 
-					<div className="mb-6">
-						<label htmlFor="email" className="label">
-							Email
-						</label>
-						<input
-							type="email"
-							id="email"
-							className="transition-200 w-full rounded-lg border border-gray-300 bg-white
-                        p-2.5 text-sm text-black  transition hover:outline-none
-                        hover:drop-shadow-lg focus:outline-none"
-							placeholder="email@mail.ugm.ac.id"
-							required
-						/>
-					</div>
-
 					<div className="inline-flex min-w-full overflow-hidden md:flex md:items-baseline md:justify-end">
 						<button
 							type="submit"
-							className="transition-200 mt-5 w-min rounded-lg border border-gray-800 bg-white
-                            px-5 py-2 text-sm font-bold text-gray-800 drop-shadow-lg
-                            transition hover:bg-gray-800 hover:text-white hover:drop-shadow-lg"
+							className="transition-200 mt-5 w-min rounded-lg border border-gray-800 bg-white px-5 py-2 text-sm font-bold text-gray-800 drop-shadow-lg transition hover:bg-gray-800 hover:text-white hover:drop-shadow-lg"
 						>
 							Submit
 						</button>
