@@ -1,19 +1,21 @@
 import db from '@/utils/db';
-import formidable from 'formidable';
 import AWS from 'aws-sdk';
 import fs from 'fs';
+import formidable from 'formidable';
 import { promisify } from 'util';
 import { ApiKeyCredentials } from '@azure/ms-rest-js';
 import { ComputerVisionClient } from '@azure/cognitiveservices-computervision';
-
 require('dotenv').config();
 
 const sleep = promisify(setTimeout);
 const key = process.env.VISION_KEY;
-const endpoint = process.env.VISION_ENDPOINT;
+const ENDPOINT = process.env.VISION_ENDPOINT;
+const BUCKET_NAME = process.env.AWS_BUCKET_NAME;
+const UPLOAD_DIR = './public/uploads';
+
 const computerVisionClient = new ComputerVisionClient(
 	new ApiKeyCredentials({ inHeader: { 'Ocp-Apim-Subscription-Key': key } }),
-	endpoint
+	ENDPOINT
 );
 
 AWS.config.update({
@@ -21,7 +23,6 @@ AWS.config.update({
 	secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 	region: process.env.AWS_REGION,
 });
-const bucketName = process.env.AWS_BUCKET_NAME;
 const s3 = new AWS.S3();
 
 export const config = {
@@ -36,27 +37,7 @@ export default async function handler(req, res) {
 	}
 
 	try {
-		const form = new formidable.IncomingForm();
-		form.uploadDir = './public/uploads';
-		form.keepExtensions = true;
-		form.keepFilenames = true;
-
-		form.on('file', (field, file) => {
-			fs.rename(file.filepath, `${form.uploadDir}/${file.originalFilename}`, () => {});
-		});
-
-		const files = await new Promise((resolve, reject) => {
-			form.parse(req, (err, fields, files) => {
-				if (err) {
-					reject(err);
-				} else {
-					resolve(files);
-				}
-			});
-		});
-
-		const file = files['images'];
-		const path = `${form.uploadDir}/${file.originalFilename}`;
+		const { file, path } = await uploadImageLocal(req);
 		const awsImageUrl = await uploadImageToS3(file.originalFilename, path);
 		const result = await ocr(computerVisionClient, awsImageUrl);
 
@@ -67,7 +48,55 @@ export default async function handler(req, res) {
 	}
 }
 
-async function ocr(client, url) {
+const uploadImageLocal = async (req) => {
+	const form = new formidable.IncomingForm();
+	form.uploadDir = UPLOAD_DIR;
+	form.keepExtensions = true;
+	form.keepFilenames = true;
+
+	form.on('file', (field, file) => {
+		fs.rename(file.filepath, `${form.uploadDir}/${file.originalFilename}`, () => {});
+	});
+
+	const files = await new Promise((resolve, reject) => {
+		form.parse(req, (err, fields, files) => {
+			if (err) {
+				reject(err);
+			} else {
+				resolve(files);
+			}
+		});
+	});
+
+	await sleep(1000);
+	const file = files['images'];
+	const path = `${form.uploadDir}/${file.originalFilename}`;
+
+	return { file, path };
+};
+
+const uploadImageToS3 = (fileName, filePath) => {
+	const fileContent = fs.readFileSync(filePath);
+
+	const params = {
+		Bucket: BUCKET_NAME,
+		Key: fileName,
+		Body: fileContent,
+		ContentType: 'image/jpeg',
+	};
+
+	return new Promise((resolve, reject) => {
+		s3.upload(params, (err, data) => {
+			if (err) {
+				reject(err);
+			} else {
+				resolve(data.Location);
+			}
+		});
+	});
+};
+
+const ocr = async (client, url) => {
 	let result = await client.read(url);
 	let operation = result.operationLocation.split('/').slice(-1)[0];
 
@@ -86,25 +115,4 @@ async function ocr(client, url) {
 	} else {
 		return 'No recognized text.';
 	}
-}
-
-function uploadImageToS3(fileName, filePath) {
-	const fileContent = fs.readFileSync(filePath);
-
-	const params = {
-		Bucket: bucketName,
-		Key: fileName,
-		Body: fileContent,
-		ContentType: 'image/jpeg',
-	};
-
-	return new Promise((resolve, reject) => {
-		s3.upload(params, (err, data) => {
-			if (err) {
-				reject(err);
-			} else {
-				resolve(data.Location);
-			}
-		});
-	});
-}
+};
