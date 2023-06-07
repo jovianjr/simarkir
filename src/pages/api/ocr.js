@@ -57,7 +57,7 @@ export default async function handler(req, res) {
 					}
 				);
 				res.status(200).json({
-					message: 'File upload successful',
+					message: 'Kendaraan berhasil tercatat masuk',
 					data: { result },
 				});
 			} else if (field.arah === 'out') {
@@ -77,7 +77,7 @@ export default async function handler(req, res) {
 						parkiran_id: field?.parkiran_id ?? 100,
 					}
 				);
-				res.status(200).json({ message: 'File upload successful', data: result });
+				res.status(200).json({ message: 'Kendaraan berhasil tercatat keluar', data: result });
 			}
 		} else {
 			res.status(404).json({ message: 'Nomor Kendaraan Tidak Ditemukan', data: {} });
