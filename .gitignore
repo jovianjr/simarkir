@@ -32,3 +32,6 @@ yarn-error.log*
 .vercel
 .env
 public/uploads/
+
+# Local Netlify folder
+.netlify

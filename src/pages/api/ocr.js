@@ -10,7 +10,7 @@ require('dotenv').config();
 const sleep = promisify(setTimeout);
 const key = process.env.VISION_KEY;
 const ENDPOINT = process.env.VISION_ENDPOINT;
-const BUCKET_NAME = process.env.AWS_BUCKET_NAME;
+const BUCKET_NAME = process.env.SIMARKIR_AWS_BUCKET_NAME;
 const UPLOAD_DIR = './public/uploads';
 
 const computerVisionClient = new ComputerVisionClient(
@@ -19,9 +19,9 @@ const computerVisionClient = new ComputerVisionClient(
 );
 
 AWS.config.update({
-	accessKeyId: process.env.AWS_ACCESS_KEY,
-	secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-	region: process.env.AWS_REGION,
+	accessKeyId: process.env.SIMARKIR_AWS_ACCESS_KEY,
+	secretAccessKey: process.env.SIMARKIR_AWS_SECRET_ACCESS_KEY,
+	region: process.env.SIMARKIR_AWS_REGION,
 });
 const s3 = new AWS.S3();
 
