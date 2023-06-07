@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react";
-import { FaTimes } from 'react-icons/fa';
-
  const Modal = ({
     modalContent,
     modalTrigger,
