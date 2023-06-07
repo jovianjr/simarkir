@@ -123,7 +123,7 @@ export default function MpLapangan() {
 
 				<div className="md:flex md:items-center md:justify-between">
 					<div className="md:flex md:items-center">
-						<div className="mr-3 divide-x divide-white/5 rounded-lg bg-red text-white md:flex md:items-center md:justify-between">
+						<div className="mr-3 divide-x divide-white/5 rounded-lg bg-gray-800 text-white md:flex md:items-center md:justify-between">
 							<p className="px-4 py-2 text-xs">Motor</p>
 							<p className="px-4 py-2 text-xs">
 								{motor?.count} / {motor?.kapasitas}{' '}
