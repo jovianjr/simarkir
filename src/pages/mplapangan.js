@@ -229,7 +229,7 @@ export default function MpLapangan() {
 												</td>
 												<td className="whitespace-nowrap px-4 py-3.5 text-sm">
 													{' '}
-													{item?.waktu_keluar}{' '}
+													{item?.waktu_keluar ?? '-- : --'}{' '}
 												</td>
 											</tr>
 										))}
