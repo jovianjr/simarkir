@@ -82,7 +82,7 @@ export default function SideMenu(props) {
 
 						{role === 'parkir' ? (
 							<Link
-								href="/mplapangan"
+								href="/parkir"
 								className="flex w-full items-center gap-2 rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md"
 							>
 								<Image src="/car.svg" alt="Simbol Parkir" className="mb-2" height={30} width={30} />
@@ -91,7 +91,7 @@ export default function SideMenu(props) {
 						) : null}
 						{role === 'akademik' ? (
 							<Link
-								href="/mpakademik"
+								href="/akademik"
 								className="flex w-full items-center gap-2 rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md"
 							>
 								<Image
@@ -126,11 +126,13 @@ export default function SideMenu(props) {
 						</div>
 						<div className="flex w-full items-center justify-between rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md">
 							<div className="flex items-center gap-2">
-								<Image src="/motorbike.svg"
+								<Image
+									src="/motorbike.svg"
 									alt="Simbol Parkir"
 									className="mb-2"
 									height={30}
-									width={30} />
+									width={30}
+								/>
 								<p className="text-[14px]">Sepeda Motor</p>
 							</div>
 							<p>
