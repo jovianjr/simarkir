@@ -113,35 +113,44 @@ export default function SideMenu(props) {
 						</Link>
 					</div>
 				</section>
-				<section className="w-full px-8 py-0">
-					<p className="mb-3 mt-3">Kapasitas Kendaraan</p>
-					<div className="flex w-full flex-col gap-2 text-left text-sm">
-						<div className="flex w-full items-center justify-between rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md">
-							<div className="flex items-center gap-2">
-								<Image src="/car.svg" alt="Simbol Parkir" className="mb-2" height={30} width={30} />
-								<p className="text-[14px]">Mobil</p>
+
+				{role === 'parkir' ? (
+					<section className="w-full px-8 py-0">
+						<p className="mb-3 mt-3">Kapasitas Kendaraan</p>
+						<div className="flex w-full flex-col gap-2 text-left text-sm">
+							<div className="flex w-full items-center justify-between rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md">
+								<div className="flex items-center gap-2">
+									<Image
+										src="/car.svg"
+										alt="Simbol Parkir"
+										className="mb-2"
+										height={30}
+										width={30}
+									/>
+									<p className="text-[14px]">Mobil</p>
+								</div>
+								<p>
+									{mobil?.count ?? 0}/{mobil?.kapasitas ?? '0'}
+								</p>
 							</div>
-							<p>
-								{mobil?.count ?? 0}/{mobil?.kapasitas ?? '0'}
-							</p>
-						</div>
-						<div className="flex w-full items-center justify-between rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md">
-							<div className="flex items-center gap-2">
-								<Image
-									src="/motorbike.svg"
-									alt="Simbol Parkir"
-									className="mb-2"
-									height={30}
-									width={30}
-								/>
-								<p className="text-[14px]">Sepeda Motor</p>
+							<div className="flex w-full items-center justify-between rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md">
+								<div className="flex items-center gap-2">
+									<Image
+										src="/motorbike.svg"
+										alt="Simbol Parkir"
+										className="mb-2"
+										height={30}
+										width={30}
+									/>
+									<p className="text-[14px]">Sepeda Motor</p>
+								</div>
+								<p>
+									{motor?.count ?? 0}/{motor?.kapasitas ?? '0'}
+								</p>
 							</div>
-							<p>
-								{motor?.count ?? 0}/{motor?.kapasitas ?? '0'}
-							</p>
 						</div>
-					</div>
-				</section>
+					</section>
+				) : null}
 			</div>
 			<div className="absolute right-0 top-0 box-border w-[73%]">{props.children}</div>
 		</section>
