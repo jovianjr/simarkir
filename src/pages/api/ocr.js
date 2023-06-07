@@ -37,14 +37,54 @@ export default async function handler(req, res) {
 	}
 
 	try {
-		const { file, path } = await uploadImageLocal(req);
-		const awsImageUrl = await uploadImageToS3(file.originalFilename, path);
-		const result = await ocr(computerVisionClient, awsImageUrl);
+		const { field, file, path } = await uploadImageLocal(req);
+		await validateRequest(res, file, field);
 
-		res.status(200).json({ message: 'File upload successful', result });
+		const awsImageUrl = await uploadImageToS3(file?.originalFilename, path);
+		const ocrResult = await ocr(computerVisionClient, awsImageUrl);
+		const data = await db.oneOrNone('select * from kendaraan k where nomor_kendaraan = $1', [
+			ocrResult,
+		]);
+
+		if (data) {
+			if (field.arah === 'in') {
+				const result = await db.one(
+					'insert into log_kendaraan (waktu_masuk, nomor_kendaraan_raw, kendaraan_id, parkiran_id) values (now(), $/nomor_kendaraan_raw/,$/kendaraan_id/,$/parkiran_id/) RETURNING *',
+					{
+						nomor_kendaraan_raw: ocrResult,
+						kendaraan_id: data.id,
+						parkiran_id: field?.parkiran_id ?? 100,
+					}
+				);
+				res.status(200).json({
+					message: 'File upload successful',
+					data: { result },
+				});
+			} else if (field.arah === 'out') {
+				const result = await db.one(
+					`update log_kendaraan 
+						set waktu_keluar = now() 
+					  where id = (
+								SELECT id
+								FROM log_kendaraan
+								WHERE kendaraan_id = $/kendaraan_id/
+								ORDER BY waktu_masuk DESC 
+								LIMIT 1
+							) 
+					   	and parkiran_id = $/parkiran_id/ RETURNING *`,
+					{
+						kendaraan_id: data.id,
+						parkiran_id: field?.parkiran_id ?? 100,
+					}
+				);
+				res.status(200).json({ message: 'File upload successful', data: result });
+			}
+		} else {
+			res.status(404).json({ message: 'Nomor Kendaraan Tidak Ditemukan', data: {} });
+		}
 	} catch (error) {
 		console.error('Error:', error);
-		res.status(500).json({ error: 'An error occurred' });
+		res.status(500).json({ message: 'An error occurred', data: {} });
 	}
 }
 
@@ -55,11 +95,13 @@ const uploadImageLocal = async (req) => {
 	form.keepFilenames = true;
 
 	form.on('file', (field, file) => {
-		fs.rename(file.filepath, `${form.uploadDir}/${file.originalFilename}`, () => {});
+		fs.rename(file.filepath, `${form.uploadDir}/${file?.originalFilename}`, () => {});
 	});
 
+	let field = null;
 	const files = await new Promise((resolve, reject) => {
 		form.parse(req, (err, fields, files) => {
+			field = fields;
 			if (err) {
 				reject(err);
 			} else {
@@ -70,9 +112,9 @@ const uploadImageLocal = async (req) => {
 
 	await sleep(1000);
 	const file = files['images'];
-	const path = `${form.uploadDir}/${file.originalFilename}`;
+	const path = `${form.uploadDir}/${file?.originalFilename}`;
 
-	return { file, path };
+	return { field, file, path };
 };
 
 const uploadImageToS3 = (fileName, filePath) => {
@@ -116,3 +158,20 @@ const ocr = async (client, url) => {
 		return 'No recognized text.';
 	}
 };
+
+const validateRequest = async (res, file, field) => {
+	if (!file) {
+		res.status(400).json({ message: 'Images field is required.', data: {} });
+	}
+	if (!field.arah) {
+		res.status(400).json({ message: 'Arah field is required.', data: {} });
+	} else if (!['in', 'out'].includes(field.arah)) {
+		res
+			.status(400)
+			.json({ message: 'Arah field should be in the following format: in, out', data: {} });
+	}
+};
+
+const insertToDB = async (res, field, ocrResult) => {};
+
+// const insertToDB = (res, field, ocrResult) => {};
