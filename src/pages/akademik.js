@@ -1,7 +1,7 @@
-import Modal from '@/Components/Modal';
+import Modal from '@/Components/Modal/index';
 import SideMenu from '@/Components/SideMenu';
-import DataAdd from '@/Components/dataadd';
-import DataEdit from '@/Components/dataedit';
+import DataAdd from '@/Components/Modal/AddModal';
+import DataEdit from '@/Components/Modal/EditModal';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 

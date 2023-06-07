@@ -9,7 +9,7 @@ export default function DataEdit({ closeModal = () => {} }) {
 					</div>
 
 					<div className="mb-6">
-						<label for="name" className="label">
+						<label htmlFor="name" className="label">
 							Nama
 						</label>
 						<input
@@ -25,7 +25,7 @@ export default function DataEdit({ closeModal = () => {} }) {
 
 					<div className="mb-6 grid gap-6 lg:grid-cols-2">
 						<div>
-							<label for="id" className="label">
+							<label htmlFor="id" className="label">
 								NIP/NIU
 							</label>
 							<input
@@ -41,7 +41,7 @@ export default function DataEdit({ closeModal = () => {} }) {
 						</div>
 
 						<div>
-							<label for="klmpkcivitas" className="label">
+							<label htmlFor="klmpkcivitas" className="label">
 								Kelompok Civitas
 							</label>
 							<select
@@ -58,7 +58,7 @@ export default function DataEdit({ closeModal = () => {} }) {
 						</div>
 
 						<div>
-							<label for="nokendaraan" className="label">
+							<label htmlFor="nokendaraan" className="label">
 								Nomor Kendaraan
 							</label>
 							<input
@@ -73,7 +73,7 @@ export default function DataEdit({ closeModal = () => {} }) {
 						</div>
 
 						<div>
-							<label for="kendaraan" className="label">
+							<label htmlFor="kendaraan" className="label">
 								Jenis Kendaraan
 							</label>
 							<select
@@ -90,7 +90,7 @@ export default function DataEdit({ closeModal = () => {} }) {
 					</div>
 
 					<div className="mb-6">
-						<label for="email" className="label">
+						<label htmlFor="email" className="label">
 							Email
 						</label>
 						<input
