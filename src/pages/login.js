@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 export default function Login() {
+	const [error, setError] = useState();
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 
@@ -25,10 +26,11 @@ export default function Login() {
 			localStorage.setItem('token', token);
 			localStorage.setItem('role', data.role);
 
+			setError();
 			router.push('/');
 		} else {
 			const data = await response.json();
-			console.log(data.message);
+			setError(data.message);
 		}
 	};
 
@@ -62,12 +64,14 @@ export default function Login() {
 						Password
 					</label>
 					<input
+						required
 						type="password"
 						placeholder="Password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						className="rounded-lg border border-gray-300 bg-white p-2.5 text-base text-sm transition duration-200 hover:outline-none hover:drop-shadow-lg focus:outline-none focus:drop-shadow-lg"
 					/>
+					{error ? <small className="text-red">Username atau password salah</small> : null}
 					<button
 						type="submit"
 						className="text-bold mt-4 cursor-pointer rounded-3xl bg-blue px-4 py-2 text-base text-white"
