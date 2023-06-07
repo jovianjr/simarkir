@@ -3,26 +3,34 @@ import db from '@/utils/db';
 export default async function handler(req, res) {
 	if (req.method === 'GET') {
 		try {
+			const parkir_id = 100;
 			const query = `
-			select
-				COUNT(lk.id),
-				k.jenis_kendaraan,
-				p.nama,
-				p.kapasitas
-			from
-				log_kendaraan lk
-			join kendaraan k on
-				lk.kendaraan_id = k.id
-			join parkir p on
-				lk.parkiran_id = p.id
-			where 
-				DATE_TRUNC('day', lk.waktu_masuk) = CURRENT_DATE
-				and lk.waktu_keluar is null
-			group by
-				k.jenis_kendaraan,
-				p.nama,
-				p.kapasitas
-      `;
+				select 
+					(select count(lk.id) from log_kendaraan lk, kendaraan k where 
+						lk.kendaraan_id = k.id
+						and DATE_TRUNC('day', lk.waktu_masuk) = CURRENT_DATE
+						and lk.waktu_keluar is null
+						and k.jenis_kendaraan = 'motor'
+					) as count,
+					'motor' as jenis_kendaraan,
+					p.nama,
+					p.kapasitas
+				from parkir p
+				where p.id = ${parkir_id}
+				union all 
+				select 
+					(select count(lk.id) from log_kendaraan lk, kendaraan k where 
+						lk.kendaraan_id = k.id
+						and DATE_TRUNC('day', lk.waktu_masuk) = CURRENT_DATE
+						and lk.waktu_keluar is null
+						and k.jenis_kendaraan = 'mobil'
+					) as count,
+					'mobil' as jenis_kendaraan,
+					p.nama,
+					p.kapasitas
+				from parkir p
+				where p.id = ${parkir_id}
+			`;
 			const result = await db.any(query);
 
 			res.status(200).json(result);

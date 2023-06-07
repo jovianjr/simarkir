@@ -120,7 +120,7 @@ export default function SideMenu(props) {
 								<p className="text-[14px]">Mobil</p>
 							</div>
 							<p>
-								{mobil?.count ?? 0}/{mobil?.kapasitas ?? '10'}
+								{mobil?.count ?? 0}/{mobil?.kapasitas ?? '0'}
 							</p>
 						</div>
 						<div className="flex w-full items-center justify-between rounded-sm bg-[#DE2C13] px-2 py-0.5 drop-shadow-md">
@@ -135,7 +135,7 @@ export default function SideMenu(props) {
 								<p className="text-[14px]">Sepeda Motor</p>
 							</div>
 							<p>
-								{motor?.count ?? 0}/{motor?.kapasitas ?? '10'}
+								{motor?.count ?? 0}/{motor?.kapasitas ?? '0'}
 							</p>
 						</div>
 					</div>

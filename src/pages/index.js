@@ -133,14 +133,14 @@ export default function Dashboard() {
 						<div className="border-gray/50 mr-1 w-1/2 rounded-lg border bg-black">
 							<h3 className="m-2 p-2 text-sm font-black text-white">Jumlah Motor Masuk</h3>
 							<p className="mb-4 ml-4 mr-4 text-xl font-black text-white">
-								{motor?.count} / {motor?.kapasitas}{' '}
+								{motor?.count ?? 0} / {motor?.kapasitas ?? 0}{' '}
 							</p>
 						</div>
 
 						<div className="border-gray/50 ml-1 w-1/2 rounded-lg border bg-white">
 							<h3 className="m-2 p-2 text-sm font-black text-black">Jumlah Mobil Masuk</h3>
 							<p className="mb-4 ml-4 mr-4 text-xl font-black text-black">
-								{mobil?.count} / {mobil?.kapasitas}{' '}
+								{mobil?.count ?? 0} / {mobil?.kapasitas ?? 0}{' '}
 							</p>
 						</div>
 					</div>
@@ -160,9 +160,13 @@ export default function Dashboard() {
 											</th>
 
 											<th scope="col">
-												<button className="flex items-center gap-x-3 focus:outline-none">
-													<span className="font-normal"> Kendaraan</span>
+												<span className="font-normal"> Kendaraan</span>
+											</th>
 
+											<th scope="col"> Kelompok Civitas </th>
+											<th scope="col">
+												<button className="flex items-center gap-x-3 focus:outline-none">
+													Masuk
 													<svg
 														className="h-3"
 														viewBox="0 0 10 11"
@@ -190,9 +194,6 @@ export default function Dashboard() {
 													</svg>
 												</button>
 											</th>
-
-											<th scope="col"> Kelompok Civitas </th>
-											<th scope="col"> Masuk </th>
 											<th scope="col"> Keluar </th>
 										</tr>
 									</thead>
@@ -228,7 +229,7 @@ export default function Dashboard() {
 													{item?.waktu_masuk}{' '}
 												</td>
 												<td className="whitespace-nowrap px-4 py-3.5 text-sm">
-													{item?.waktu_keluar}{' '}
+													{item?.waktu_keluar ?? '-- : --'}{' '}
 												</td>
 											</tr>
 										))}

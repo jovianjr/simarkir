@@ -25,7 +25,7 @@ export default async function handler(req, res) {
           and DATE_TRUNC('day', lk.waktu_masuk) = CURRENT_DATE
         order by
           lk.waktu_keluar is null desc,
-          lk.waktu_masuk 
+          lk.waktu_masuk desc
       ) as tabel;
     `;
 
