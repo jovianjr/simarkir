@@ -72,13 +72,33 @@ export default function SideMenu(props) {
 						</p>
 					</div>
 					<div className="flex w-full flex-col gap-2 text-left">
-						<Link
+						{/* <Link
 							href="/"
 							className="flex w-full items-center gap-2 rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md"
-						>
+							>
 							<Image src="/home.svg" alt="Simbol Parkir" className="mb-2" height={30} width={30} />
 							<p className="text-[14px]">Dashboard</p>
-						</Link>
+						</Link> */}
+
+						{role === 'akademik' ? (
+							<Link
+							href="/dashakademik"
+							className="flex w-full items-center gap-2 rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md"
+							>
+							<Image src="/home.svg" alt="Simbol Parkir" className="mb-2" height={30} width={30} />
+							<p className="text-[14px]">Dashboard</p>
+							</Link>
+						) : null}
+
+						{role === 'parkir' ? (
+							<Link
+							href="/"
+							className="flex w-full items-center gap-2 rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md"
+							>
+							<Image src="/home.svg" alt="Simbol Parkir" className="mb-2" height={30} width={30} />
+							<p className="text-[14px]">Dashboard</p>
+							</Link>
+						) : null}
 
 						{role === 'parkir' ? (
 							<Link
@@ -89,6 +109,7 @@ export default function SideMenu(props) {
 								<p className="text-[14px]">Manajemen Parkir</p>
 							</Link>
 						) : null}
+
 						{role === 'akademik' ? (
 							<Link
 								href="/akademik"

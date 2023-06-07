@@ -131,16 +131,16 @@ export default function Dashboard() {
                     <div className="min-w-full p-5 md:flex-col md:items-baseline">
                         <div className="md:flex md:items-baseline mb-2">
                             <div className="border-gray/50 mr-1 w-1/2 rounded-lg border bg-white">
-                                <h3 className="m-2 p-2 text-sm font-black text-black">Jumlah Motor Masuk</h3>
+                                <h3 className="m-2 p-2 text-sm font-black text-black">Total Motor Milik Civitas DTETI</h3>
                                 <p className="mb-4 ml-4 mr-4 text-xl font-black text-black">
-                                    {motor?.count ?? 0} / {motor?.kapasitas ?? 0}{' '}
+                                    {motor?.count ?? 0} {' '}
                                 </p>
                             </div>
 
                             <div className="border-gray/50 ml-1 w-1/2 rounded-lg border bg-white">
-                                <h3 className="m-2 p-2 text-sm font-black text-black">Jumlah Mobil Masuk</h3>
+                                <h3 className="m-2 p-2 text-sm font-black text-black">Total Mobil Milik Civitas DTETI</h3>
                                 <p className="mb-4 ml-4 mr-4 text-xl font-black text-black">
-                                    {mobil?.count ?? 0} / {mobil?.kapasitas ?? 0}{' '}
+                                    {mobil?.count ?? 0} {' '}
                                 </p>
                             </div>
                         </div>
