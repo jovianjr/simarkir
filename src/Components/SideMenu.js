@@ -79,6 +79,7 @@ export default function SideMenu(props) {
 							<Image src="/home.svg" alt="Simbol Parkir" className="mb-2" height={30} width={30} />
 							<p className="text-[14px]">Dashboard</p>
 						</Link>
+
 						{role === 'parkir' ? (
 							<Link
 								href="/mplapangan"
@@ -123,15 +124,13 @@ export default function SideMenu(props) {
 								{mobil?.count ?? 0}/{mobil?.kapasitas ?? '0'}
 							</p>
 						</div>
-						<div className="flex w-full items-center justify-between rounded-sm bg-[#DE2C13] px-2 py-0.5 drop-shadow-md">
+						<div className="flex w-full items-center justify-between rounded-sm bg-neutral-50/20 px-2 py-0.5 drop-shadow-md">
 							<div className="flex items-center gap-2">
-								<Image
-									src="/motorbike.svg"
+								<Image src="/motorbike.svg"
 									alt="Simbol Parkir"
 									className="mb-2"
 									height={30}
-									width={30}
-								/>
+									width={30} />
 								<p className="text-[14px]">Sepeda Motor</p>
 							</div>
 							<p>
