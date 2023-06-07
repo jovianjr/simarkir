@@ -1,4 +1,7 @@
-export default function DataEdit() {
+export default function DataEdit({
+	modalTrigger,
+    triggerModal = () => {},
+}) {
 	return (
 		<section>
 			<div className="mx-auto max-w-2xl rounded-lg border border-gray-200 bg-white p-16 drop-shadow-lg">
@@ -126,6 +129,7 @@ export default function DataEdit() {
 						<button
 							type="cancel"
 							className="mt-5 min-w-0 px-5 py-2 text-sm font-bold text-gray-800"
+							onClick={() => triggerModal(!modalTrigger)}
 						>
 							Batal
 						</button>

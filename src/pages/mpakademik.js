@@ -1,4 +1,7 @@
+import Modal from '@/Components/Modal';
 import SideMenu from '@/Components/SideMenu';
+import DataAdd from '@/Components/dataadd';
+import DataEdit from '@/Components/dataedit';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
@@ -55,6 +58,14 @@ export default function MpAkademik() {
 		return true;
 	});
 
+    const [modalTrigger, setModalTrigger] = useState(false);
+    const [modalContent, setModalContent] = useState(null);
+
+    const modalClickHandler = (content) => {
+        setModalTrigger(!modalTrigger)
+        setModalContent(content)
+    }
+
 	return (
 		<SideMenu>
 			<Head>
@@ -65,6 +76,7 @@ export default function MpAkademik() {
 			</Head>
 
 			<section className="h-screen overflow-auto bg-white">
+                <Modal modalContent={modalContent} triggerModal={modalClickHandler} modalTrigger={modalTrigger} />
 				<div className="mb-6 mt-6 md:flex md:items-baseline md:justify-between">
 					<div>
 						<h1>Daftar Kendaraan</h1>
@@ -166,7 +178,7 @@ export default function MpAkademik() {
 					</div>
 
 					<div>
-						<button className="divide ml-1 inline-flex divide-x divide-white/20 overflow-hidden rounded-lg">
+						<button className="divide ml-1 inline-flex divide-x divide-white/20 overflow-hidden rounded-lg" onClick={() => modalClickHandler(<DataAdd triggerModal={modalClickHandler} modalTrigger={modalTrigger}/>)}>
 							<div className="bg-gray-800 px-5 py-2 text-xs font-medium text-white"> Tambah </div>
 							<div alt="tambah" className="bg-gray-800 px-3 py-2 text-xs font-medium text-white">
 								{' '}
@@ -231,6 +243,7 @@ export default function MpAkademik() {
 														<button
 															className="transition-200 bg-white px-2.5 py-1.5 text-xs font-medium text-black transition
                                                     hover:bg-gray-800 hover:text-white active:bg-gray-800 active:text-white"
+                                                    onClick={() => modalClickHandler(<DataEdit triggerModal={modalClickHandler} modalTrigger={modalTrigger}/>)}
 														>
 															Edit
 														</button>
